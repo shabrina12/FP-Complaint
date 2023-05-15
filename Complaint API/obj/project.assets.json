@@ -224,32 +224,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\shabb\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Irfan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shabb\\source\\repos\\Complaint API\\Complaint API\\Complaint API.csproj",
+      "projectUniqueName": "D:\\Dev\\FP_Complaint\\Complaint API\\Complaint API.csproj",
       "projectName": "Complaint API",
-      "projectPath": "C:\\Users\\shabb\\source\\repos\\Complaint API\\Complaint API\\Complaint API.csproj",
-      "packagesPath": "C:\\Users\\shabb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shabb\\source\\repos\\Complaint API\\Complaint API\\obj\\",
+      "projectPath": "D:\\Dev\\FP_Complaint\\Complaint API\\Complaint API.csproj",
+      "packagesPath": "C:\\Users\\Irfan\\.nuget\\packages\\",
+      "outputPath": "D:\\Dev\\FP_Complaint\\Complaint API\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\shabb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Irfan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://www.nuget.org/api/v2/curated-feeds/microsoftdotnet/": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
@@ -291,7 +286,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
