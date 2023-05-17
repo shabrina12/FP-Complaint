@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Complaint_API.Models
 {
@@ -16,8 +17,11 @@ namespace Complaint_API.Models
         public string Password { get; set; } = null!;
         public int ProfileId { get; set; }
 
+        [JsonIgnore]
         public virtual Profile Profile { get; set; } = null!;
+        [JsonIgnore]
         public virtual ICollection<Order> Orders { get; set; }
+        [JsonIgnore]
         public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

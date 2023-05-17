@@ -9,9 +9,10 @@ namespace Complaint_API.Models
         public int Id { get; set; }
         public int UserId { get; set; }
         public int RoleId { get; set; }
+
         [JsonIgnore]
-        public virtual Role Role { get; set; } = null!;
+        public virtual Role? Role { get; set; }
         [JsonIgnore]
-        public virtual User User { get; set; } = null!;
+        public virtual User? User { get; set; }
     }
 }
