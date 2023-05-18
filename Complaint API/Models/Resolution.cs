@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Complaint_API.Models
 {
@@ -18,8 +19,11 @@ namespace Complaint_API.Models
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
 
+        [JsonIgnore]
         public virtual Complaint Complaint { get; set; } = null!;
+        [JsonIgnore]
         public virtual Employee Employee { get; set; } = null!;
+        [JsonIgnore]
         public virtual ICollection<Feedback> Feedbacks { get; set; }
     }
 }

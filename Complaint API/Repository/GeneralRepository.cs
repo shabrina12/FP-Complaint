@@ -15,7 +15,7 @@ namespace Complaint_API.Repository
         }
 
         // GET ALL
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await _context.Set<TEntity>().ToListAsync();
         }

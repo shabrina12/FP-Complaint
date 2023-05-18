@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Complaint_API.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    public class UserRoleController : BaseController<IUserRoleRepository, UserRole, int>
+    [Authorize]
+    public class OrderController : BaseController<IOrderRepository, Order, int>
     {
-        public UserRoleController(IUserRoleRepository repository) : base(repository)
+        public OrderController(IOrderRepository repository) : base(repository)
         {
             
         }

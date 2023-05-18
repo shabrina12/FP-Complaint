@@ -20,7 +20,7 @@ namespace Complaint_API.Base
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllAsync()
+        public virtual async Task<ActionResult> GetAllAsync()
         {
             var results = await _repository.GetAllAsync();
             if (results.Count() is 0)

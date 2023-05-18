@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Complaint_API.Models
 {
@@ -14,7 +15,9 @@ namespace Complaint_API.Models
         public int CustomerId { get; set; }
         public DateTime OrderDate { get; set; }
 
-        public virtual User Customer { get; set; } = null!;
+        [JsonIgnore]
+        public virtual User? Customer { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Complaint> Complaints { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace Complaint_API.Models
         public int ProfileId { get; set; }
 
         [JsonIgnore]
-        public virtual Profile Profile { get; set; } = null!;
+        public virtual Profile? Profile { get; set; }
         [JsonIgnore]
         public virtual ICollection<Order> Orders { get; set; }
         [JsonIgnore]
