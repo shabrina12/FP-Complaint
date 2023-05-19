@@ -40,6 +40,7 @@ namespace Complaint_API.Controllers
                 });
             }
 
+            var user = await _userRepository.GetUserByEmailAsync(login.Email);
             var claims = new List<Claim>()
                     {
                         new Claim(ClaimTypes.Email, login.Email),

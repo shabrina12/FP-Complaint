@@ -12,8 +12,8 @@ namespace Complaint_API.Models
         }
 
         public int Id { get; set; }
-        public int CustomerId { get; set; }
-        public DateTime OrderDate { get; set; }
+        public int? CustomerId { get; set; }
+        public DateTime? OrderDate { get; set; }
 
         [JsonIgnore]
         public virtual User? Customer { get; set; }

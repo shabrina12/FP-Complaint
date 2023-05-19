@@ -57,7 +57,7 @@ namespace Complaint_API.Base
         }
 
         [HttpPost]
-        public async Task<ActionResult> InsertAsync(Entity entity)
+        public virtual async Task<ActionResult> InsertAsync(Entity entity)
         {
             var result = await _repository.InsertAsync(entity);
             if (result is 0)

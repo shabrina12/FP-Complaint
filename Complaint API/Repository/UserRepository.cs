@@ -48,6 +48,12 @@ namespace Complaint_API.Repository
             return usersData;
         }
 
+        public async Task<User> GetUserByEmailAsync(string email)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            return user!;
+        }
+
         public async Task RegisterAsync(RegisterVM register)
         {
             Profile profile = new Profile
