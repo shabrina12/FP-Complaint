@@ -11,7 +11,7 @@ namespace Complaint_API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
-        private IUserRoleRepository _userRoleRepository;
+        private readonly IUserRoleRepository _userRoleRepository;
         private readonly ITokenService _tokenService;
 
         public AuthController(

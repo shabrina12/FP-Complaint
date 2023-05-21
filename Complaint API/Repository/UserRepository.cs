@@ -73,11 +73,22 @@ namespace Complaint_API.Repository
                 ProfileId = profile.Id,
             };
             await InsertAsync(user);
-            // di db ku role "user" idnya = 1 
+
+            // Default: add role user to new register
+            var roleUser = await _context.Roles.FirstOrDefaultAsync(r  => r.Name == "User");
+            if (roleUser == null)
+            {
+                await _context.Roles.AddAsync(new Role
+                {
+                    Name = "User"
+                });
+                await _context.SaveChangesAsync();
+                roleUser = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "User");
+            }
             UserRole userRole = new UserRole
             {
                 UserId = user.Id,
-                RoleId = 1
+                RoleId = roleUser!.Id
             };
             await _userRoleRepository.InsertAsync(userRole);
 
