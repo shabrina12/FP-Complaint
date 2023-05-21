@@ -33,7 +33,7 @@ namespace Complaint_API.Repository
                                join r in _context.Roles on ur.RoleId equals r.Id
                                select new
                                {
-                                   p.Id,
+                                   u.Id,
                                    Name = p.FirstName + ' ' + p.LastName,
                                    u.Email,
                                    p.Gender,
@@ -73,11 +73,11 @@ namespace Complaint_API.Repository
                 ProfileId = profile.Id,
             };
             await InsertAsync(user);
-
+            // di db ku role "user" idnya = 1 
             UserRole userRole = new UserRole
             {
                 UserId = user.Id,
-                RoleId = 2
+                RoleId = 1
             };
             await _userRoleRepository.InsertAsync(userRole);
 
