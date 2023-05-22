@@ -12,6 +12,6 @@ namespace Complaint_API.Models
         public int Rating { get; set; }
 
         [JsonIgnore]
-        public virtual Resolution Resolution { get; set; } = null!;
+        public virtual Resolution? Resolution { get; set; }
     }
 }

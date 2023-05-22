@@ -16,7 +16,7 @@ namespace Complaint_API.Models
         public DateTime HiringDate { get; set; }
 
         [JsonIgnore]
-        public virtual Profile Profile { get; set; } = null!;
+        public virtual Profile? Profile { get; set; }
         [JsonIgnore]
         public virtual ICollection<Resolution> Resolutions { get; set; }
     }
