@@ -1,6 +1,5 @@
 ﻿using Complaint_API.Repository.Contracts;
 using Complaint_API.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -68,13 +67,16 @@ namespace Complaint_API.Base
                     message = "Data Fail to Insert!"
                 });
             }
-            return Ok(new ResultFormat
+            return new ObjectResult(new ResultFormat
             {
                 StatusCode = 201,
                 Status = "Success",
                 Message = "Data Saved Successfully!",
                 Data = result
-            });
+            })
+            {
+                StatusCode = 201
+            };
         }
 
         [HttpPut("{key}")]
