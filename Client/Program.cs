@@ -17,6 +17,7 @@ builder.Services.AddSession();
 builder.Services.AddScoped(typeof(IGeneralRepository<,>), typeof(GeneralRepository<,>));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<IComplaintRepository, ComplaintRepository>();
 
 //JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

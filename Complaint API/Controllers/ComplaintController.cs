@@ -40,7 +40,7 @@ namespace Complaint_API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> InserComplainttAsync(ComplaintVM request)
+        public async Task<ActionResult> InsertComplaintAsync(ComplaintVM request)
         {
             Complaint entity = new Complaint
             {
