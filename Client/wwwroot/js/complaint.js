@@ -29,7 +29,8 @@ $(document).ready(function () {
             {
                 data: "",
                 render: (data, type, row) => {
-                    return `<button class="btn btn-success" onclick="EditData(${row.id})" data-bs-toggle="modal">Edit</button>`
+                    return `<button class="btn btn-success" onclick="EditData(${row.id})" data-bs-toggle="modal">Edit</button>
+                    <button class="btn btn-danger" onclick="Delete(${row.id})" data-bs-toggle="modal">Delete</button>`
                 }
             },
         ],
@@ -65,7 +66,7 @@ $(document).ready(function () {
     }, 30000);
 });
 
-//Show The Popup Modal For Edit University Record
+// Edit record by id
 function EditData(id) {
 
     $("#EditComplaintModal").modal('show');
@@ -129,4 +130,34 @@ function EditData(id) {
             })
         }
     })
+}
+
+// Delete record by id
+function Delete(id) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: "DELETE",
+                url: "https://localhost:7127/api/complaint/" + id,
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
+            }).done((result) => {
+                setInterval('location.reload()', 1500);
+            });
+            Swal.fire(
+                'Deleted!',
+                'Your data has been deleted.',
+                'success'
+            )
+        }
+    });
 }
