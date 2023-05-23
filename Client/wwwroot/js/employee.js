@@ -29,27 +29,7 @@ $(document).ready(function () {
         iDisplayLength: 5,
         dom: 'lBfrtip',
         buttons: [
-            {
-                extend: 'copyHtml5', className: 'custom-btn'
-            },
-            {
-                extend: 'excelHtml5',
-                className: 'custom-btn',
-                text: '<i class="fas fa-file-excel"></i>',
-                titleAttr: 'Excel'
-            },
-            {
-                extend: 'csvHtml5',
-                className: 'custom-btn',
-                text: '<i class="fa-solid fa-file-csv"></i>',
-                titleAttr: 'CSV'
-            },
-            {
-                extend: 'pdfHtml5',
-                className: 'custom-btn',
-                text: '<i class="fa-solid fa-file-pdf"></i>',
-                titleAttr: 'PDF'
-            }
+            'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
         ]
     });
     setInterval(function () {
