@@ -18,6 +18,14 @@ builder.Services.AddControllers();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<MyContext>(options => options.UseSqlServer(connectionString));
 
+// Configure CORS
+builder.Services.AddCors(options =>
+                        options.AddDefaultPolicy(policy => {
+                            policy.AllowAnyOrigin();
+                            policy.AllowAnyHeader();
+                            policy.AllowAnyMethod();
+                        }));
+
 // Configure Dependency Injection for Repositories
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
@@ -84,6 +92,7 @@ app.UseStatusCodePages(async context => {
     }
 });
 
+app.UseCors();
 app.UseAuthentication();
 app.UseAuthorization();
 
