@@ -76,9 +76,7 @@ function EditData(id) {
     $.ajax({
         type: "GET",
         url: url,
-        headers: {
-            'Authorization': 'Bearer ' + token
-        },
+        headers: headers,
         success: function (data) {
             var obj = data.data;
             console.log(data.data);
@@ -147,9 +145,7 @@ function Delete(id) {
             $.ajax({
                 type: "DELETE",
                 url: "https://localhost:7127/api/complaint/" + id,
-                headers: {
-                    'Authorization': 'Bearer ' + token
-                },
+                headers: headers,
             }).done((result) => {
                 setInterval('location.reload()', 1500);
             });
