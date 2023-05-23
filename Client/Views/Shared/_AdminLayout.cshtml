@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 	<link rel="stylesheet" href="~/css/app.css" asp-append-version="true" />
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
@@ -37,6 +38,9 @@
 						<a class="sidebar-link" href="pages-profile.html">
 							<i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
 						</a>
+					</li>
+					<li class="sidebar-item">
+						<a class="sidebar-link" asp-area="" asp-controller="Complaint" asp-action="Index">Complaint</a>
 					</li>
 
 					<li class="sidebar-item">
@@ -529,6 +533,7 @@
 		});
 	</script>
 	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="~/js/site.js" asp-append-version="true"></script>
 	<script src="~/js/app.js"></script>

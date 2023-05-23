@@ -13,8 +13,13 @@ namespace Client.Controllers
 		{
 			this.repository = repository;
 		}
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-		[HttpGet]
+        [HttpGet]
 		public IActionResult AddComplaint()
 		{
 			return View();
