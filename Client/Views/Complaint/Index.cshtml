@@ -1,5 +1,5 @@
 ﻿<!-- Modal Edit -->
-@*<div id="EditModal" class="modal fade" role="dialog">
+<div id="EditComplaintModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,8 +9,22 @@
             <div class="modal-body">
                 <form class="needs-validation" method="post">
                     <div class="mb-3">
-                        <label for="editUniversityName" class="form-label">University Name</label>
-                        <input type="text" class="form-control" id="editUniversityName" required>
+                        <label for="editTitle" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="editTitle" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editDesc" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="editDesc" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editOrderId" class="form-label">Order ID</label>
+                        <input type="text" class="form-control" id="editOrderId" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -19,11 +33,11 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="SaveUniversity">Save changes</button>
+                <button type="button" class="btn btn-primary" id="SaveComplaint">Save changes</button>
             </div>
         </div>
     </div>
-</div>*@
+</div>
 
 <h2>Table Complaint Data</h2>
 <a class="nav-link mb-3" asp-area="" asp-controller="Complaint" asp-action="AddComplaint">New Complaint</a>
@@ -38,7 +52,7 @@
             <th scope="col" class="col-1">Status</th>
             <th scope="col" class="col-1">Created At</th>
             <th scope="col" class="col-1">Updated At</th>
-            @* <th scope="col" class="col-2">Action</th>*@
+             <th scope="col" class="col-2">Action</th>
         </tr>
     </thead>
     <tbody id="tbodyComplaint">

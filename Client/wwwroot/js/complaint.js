@@ -1,12 +1,11 @@
 ﻿
+var token = sessionStorage.getItem("JWToken");
+var headers = {};
+if (token) {
+    headers.Authorization = 'Bearer ' + token;
+}
+
 $(document).ready(function () {
-
-    var token = sessionStorage.getItem("JWToken");
-    var headers = {};
-    if (token) {
-        headers.Authorization = 'Bearer ' + token;
-    }
-
     let table = new $('#tableComplaint').DataTable({
         ajax: {
             url: "https://localhost:7127/api/complaint",
@@ -27,13 +26,12 @@ $(document).ready(function () {
             { data: "status" },
             { data: "dateCreated" },
             { data: "dateUpdated" },
-            /*{
+            {
                 data: "",
                 render: (data, type, row) => {
-                    return `<button class="btn btn-danger" onclick="Delete(${row.id})" data-bs-toggle="modal">Delete</button>
-                    <button class="btn btn-success" onclick="EditData(${row.id})" data-bs-toggle="modal">Edit</button>`
+                    return `<button class="btn btn-success" onclick="EditData(${row.id})" data-bs-toggle="modal">Edit</button>`
                 }
-            },*/
+            },
         ],
         aLengthMenu: [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
         iDisplayLength: 5,
@@ -66,3 +64,69 @@ $(document).ready(function () {
         table.ajax.reload();
     }, 30000);
 });
+
+//Show The Popup Modal For Edit University Record
+function EditData(id) {
+
+    $("#EditComplaintModal").modal('show');
+
+    var url = "https://localhost:7127/api/complaint/" + id;
+
+    $.ajax({
+        type: "GET",
+        url: url,
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
+        success: function (data) {
+            var obj = data.data;
+            console.log(data.data);
+            $("#editTitle").val(obj.title);
+            $("#editDesc").val(obj.description);
+            $("#editOrderId").val(obj.orderId);
+
+            $("#SaveComplaint").click(function () {
+                var newTitle = $("#editTitle").val();
+                var newDesc = $("#editDesc").val();
+                var newOrderId = $("#editOrderId").val();
+     
+                $.ajax({
+                    type: "PUT",
+                    url: url,
+                    data: JSON.stringify({
+                        id: id,
+                        title: newTitle,
+                        description: newDesc,
+                        orderId: newOrderId,
+                        status: data.data.status,
+                        dateCreated: data.data.dateCreated, 
+                        dateUpdated: new Date()
+                    }),
+                    datatype: "json",
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                        'Content-Type': 'application/json'
+                    },
+                    success: function (result) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Successfully update data',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        $("#EditComplaintModal").modal("hide");
+                        setInterval('location.reload()', 1500);
+                    },
+                    error: function (er) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Failed to update data!'
+                        });
+                    }
+                });
+            })
+        }
+    })
+}
