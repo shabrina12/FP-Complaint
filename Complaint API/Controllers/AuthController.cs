@@ -41,10 +41,11 @@ namespace Complaint_API.Controllers
             }
 
             var user = await _userRepository.GetUserByEmailAsync(login.Email);
+            string fullName = user.Profile.FirstName + " " + user.Profile.LastName;
             var claims = new List<Claim>()
                     {
                         new Claim(ClaimTypes.Email, login.Email),
-                        new Claim(ClaimTypes.Name, login.Email),
+                        new Claim(ClaimTypes.Name, fullName),
                     };
 
             var getRoles = await _userRoleRepository.GetRolesByEmail(login.Email);

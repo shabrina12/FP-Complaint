@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Complaint_API.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "admin")]
     public class UserRoleController : BaseController<IUserRoleRepository, UserRole, int>
     {
         public UserRoleController(IUserRoleRepository repository) : base(repository)

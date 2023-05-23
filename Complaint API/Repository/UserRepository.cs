@@ -50,7 +50,7 @@ namespace Complaint_API.Repository
 
         public async Task<User> GetUserByEmailAsync(string email)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            var user = await _context.Users.Include(u => u.Profile).FirstOrDefaultAsync(u => u.Email == email);
             return user!;
         }
 
@@ -75,15 +75,15 @@ namespace Complaint_API.Repository
             await InsertAsync(user);
 
             // Default: add role user to new register
-            var roleUser = await _context.Roles.FirstOrDefaultAsync(r  => r.Name == "User");
+            var roleUser = await _context.Roles.FirstOrDefaultAsync(r  => r.Name == "user");
             if (roleUser == null)
             {
                 await _context.Roles.AddAsync(new Role
                 {
-                    Name = "User"
+                    Name = "user"
                 });
                 await _context.SaveChangesAsync();
-                roleUser = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "User");
+                roleUser = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "user");
             }
             UserRole userRole = new UserRole
             {
