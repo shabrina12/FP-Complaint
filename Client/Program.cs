@@ -20,6 +20,8 @@ builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
 builder.Services.AddScoped<IComplaintRepository, ComplaintRepository>();
+builder.Services.AddScoped<IResolutionRepository, ResolutionRepository>();
+builder.Services.AddScoped<IFeedbackRepository, FeedbackRepository>();
 
 //JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
