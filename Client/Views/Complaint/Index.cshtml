@@ -60,12 +60,8 @@
 </table>
 
 @section Scripts{
-    <script src="~/js/complaint.js"></script>
     <script>
-        $(document).ready(function () {
-            // get token from server
-            const token = '@Context.Session.GetString("JWToken")';
-            sessionStorage.setItem("JWToken", token);
-        });
+        $("li#nav-complaint").addClass("active")
     </script>
+    <script src="~/js/complaint.js"></script>
 }

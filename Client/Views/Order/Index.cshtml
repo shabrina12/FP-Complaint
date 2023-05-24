@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Order";
+}
+<div>
+    <button type="button" class="btn btn-primary mb-3" onclick="addOrder()"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Order</button>
+    <table id="table" class="table display">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>ID</th>
+                <th>Order date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@section Scripts{
+    <script>
+        $("li#nav-order").addClass("active")
+    </script>
+    <script src="~/js/order.js"></script>
+}
