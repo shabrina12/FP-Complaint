@@ -27,60 +27,32 @@
             -->
             <div class="sidebar-wrapper">
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text">
-                        Creative Tim
+                    <a href="#" class="simple-text">
+                        Complaint App
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="dashboard.html">
-                            <i class="nc-icon nc-chart-pie-35"></i>
+                    <li class="nav-item" id="nav-home">
+                        <a class="nav-link" href="/home/index">
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="./user.html">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p>User Profile</p>
+                    
+                    <li class="nav-item" id="nav-order">
+                        <a class="nav-link" href="/order/index">
+                            <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                            <p>Order</p>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="./table.html">
-                            <i class="nc-icon nc-notes"></i>
-                            <p>Table List</p>
+                    <li class="nav-item" id="nav-complaint">
+                        <a class="nav-link" asp-area="" asp-controller="Complaint" asp-action="Index">
+                            <i class="fa fa-file-text" aria-hidden="true"></i>Complaint
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" asp-area="" asp-controller="User" asp-action="Index">User</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" asp-area="" asp-controller="Complaint" asp-action="Index">Complaint</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" asp-area="" asp-controller="Feedback" asp-action="Index">Feedback</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./icons.html">
-                            <i class="nc-icon nc-atom"></i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./maps.html">
-                            <i class="nc-icon nc-pin-3"></i>
-                            <p>Maps</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./notifications.html">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>Notifications</p>
-                        </a>
-                    </li>
-                    <li class="nav-item active active-pro">
-                        <a class="nav-link active" href="upgrade.html">
-                            <i class="nc-icon nc-alien-33"></i>
-                            <p>Upgrade to PRO</p>
+                    <li class="nav-item" id="nav-feedback">
+                        <a class="nav-link" asp-area="" asp-controller="Feedback" asp-action="Index">
+                            <i class="fa fa-commenting" aria-hidden="true"></i>Feedback
                         </a>
                     </li>
                 </ul>

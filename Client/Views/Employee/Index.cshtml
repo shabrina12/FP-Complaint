@@ -17,11 +17,4 @@
 
 @section Scripts{
     <script src="~/js/employee.js"></script>
-    <script>
-        $(document).ready(function () {
-            // get token from server
-            const token = '@Context.Session.GetString("JWToken")';
-            sessionStorage.setItem("JWToken", token);
-        });
-    </script>
 }
