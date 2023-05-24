@@ -1,0 +1,70 @@
+﻿<!-- Modal Edit -->
+<div id="EditResolutionModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Complaint</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="employeeId" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="employeeId" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="complaintId" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="complaintId" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editDesc" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="editDesc" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editStatus" class="form-label">Role</label>
+                        <select class="form-select" aria-label="status" id="editStatus">
+                            <option hidden>Status</option>
+                            <option value="0">rejected</option>
+                            <option value="1">accepted</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="SaveResolution">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2>Table Resolution</h2>
+<a class="nav-link mb-3" asp-area="" asp-controller="Resolution" asp-action="AddResolution">New Resolution</a>
+
+<table class="table table-striped table-bordered table-hover" id="tableResolution">
+    <thead class="table-head">
+        <tr>
+            <th scope="col" class="col-1">No</th>
+            <th scope="col" class="col-1">Employee ID</th>
+            <th scope="col" class="col-1">Complaint ID</th>
+            <th scope="col" class="col-1">Description</th>
+            <th scope="col" class="col-1">Status</th>
+            <th scope="col" class="col-1">Created At</th>
+            <th scope="col" class="col-1">Updated At</th>
+            <th scope="col" class="col-2">Action</th>
+        </tr>
+    </thead>
+    <tbody id="tbodyResolution">
+    </tbody>
+</table>
+
+@section Scripts{
+    <script src="~/js/resolution.js"></script>
+    <script>
+        $(document).ready(function () {
+            // get token from server
+            const token = '@Context.Session.GetString("JWToken")';
+            sessionStorage.setItem("JWToken", token);
+        });
+    </script>
+}

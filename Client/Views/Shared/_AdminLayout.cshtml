@@ -67,6 +67,12 @@
 					</li>
 
 					<li class="sidebar-item">
+						<a class="sidebar-link" asp-area="" asp-controller="Resolution" asp-action="Index">
+							<i class="align-middle" data-feather="file-text"></i> Resolution
+						</a>
+					</li>
+
+					<li class="sidebar-item">
 						<a class="sidebar-link" asp-area="" asp-controller="Auth" asp-action="Logout">
 							<i class="align-middle" data-feather="log-out"></i> Logout
 						</a>
@@ -229,7 +235,6 @@
 
 			<main class="content">
 				<div class="container-fluid p-0">
-					<h1 class="h3 mb-3"><strong>Dashboard</strong></h1>
 					@RenderBody()
 				</div>
 			</main>
