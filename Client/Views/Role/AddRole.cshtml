@@ -1,0 +1,78 @@
+﻿@model Client.ViewModels.RoleVM
+
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<h2>Table Roles</h2>
+
+<button class="btn btn-primary mb-3" type="button" data-bs-toggle="modal" data-bs-target="#AddRoleModal">New Role</button>
+
+<!-- Modal Add Role Popup -->
+<div id="AddRoleModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New Role</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="AddRole">
+                    <div class="mb-3">
+                        <label for="roleName" class="form-label">Role Name</label>
+                        <input asp-for="Name" class="form-control" type="text" id="roleName" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Edit Role -->
+<div id="EditRoleModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Complaint</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="editName" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="editName" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="SaveRole">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped table-bordered table-hover" id="tableRole">
+    <thead class="table-head">
+        <tr>
+            <th scope="col" class="col-1">No</th>
+            <th scope="col" class="col-1">Name</th>
+            <th scope="col" class="col-1">Action</th>
+        </tr>
+    </thead>
+    <tbody id="tbodyRole">
+    </tbody>
+</table>
+
+@section Scripts{
+    <script src="~/js/role.js"></script>
+    <script>
+        $(document).ready(function () {
+            // get token from server
+            const token = '@Context.Session.GetString("JWToken")';
+            sessionStorage.setItem("JWToken", token);
+        });
+    </script>
+}
