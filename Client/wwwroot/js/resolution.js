@@ -24,8 +24,18 @@ $(document).ready(function () {
             { data: "complaintId" },
             { data: "description" },
             { data: "status" },
-            { data: "dateCreated" },
-            { data: "dateUpdated" },
+            {
+                data: "dateCreated",
+                render: (data) => {
+                    return formatDate(2, data)
+                }
+            },
+            {
+                data: "dateUpdated",
+                render: (data) => {
+                    return formatDate(2, data)
+                }
+            },
             {
                 data: "",
                 render: (data, type, row) => {

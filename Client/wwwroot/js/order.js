@@ -21,8 +21,7 @@
                 searchable: false,
                 type: 'date',
                 render: function (data) {
-                    let date = new Date(data)
-                    return `${date.getDate()} ${date.getMonth()+1} ${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+                    return formatDate(2, data)
                 }
             },
             {

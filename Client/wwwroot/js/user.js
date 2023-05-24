@@ -23,7 +23,12 @@ $(document).ready(function () {
             { data: "name" },
             { data: "email" },
             { data: "gender" },
-            { data: "birthDate" },
+            {
+                data: "birthDate",
+                render: (data) => {
+                    return formatDate(1, data)
+                }
+            },
             { data: "phoneNumber" },
             { data: "role.name" },
         ],

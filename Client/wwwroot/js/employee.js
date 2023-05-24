@@ -23,7 +23,12 @@ $(document).ready(function () {
             { data: "profileId" },
             { data: "fullName" },
             { data: "gender" },
-            { data: "hiringDate" }
+            {
+                data: "hiringDate",
+                render: (data) => {
+                    return formatDate(1, data)
+                }
+            }
         ],
         aLengthMenu: [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
         iDisplayLength: 5,
