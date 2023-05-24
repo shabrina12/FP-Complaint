@@ -18,6 +18,7 @@ builder.Services.AddScoped(typeof(IGeneralRepository<,>), typeof(GeneralReposito
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
 builder.Services.AddScoped<IComplaintRepository, ComplaintRepository>();
 
 //JWT

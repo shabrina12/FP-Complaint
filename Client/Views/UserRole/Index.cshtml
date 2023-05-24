@@ -1,0 +1,65 @@
+﻿@model Client.ViewModels.UserRoleVM
+
+@{
+    ViewData["Title"] = "User Roles";
+}
+
+<h2>Table User Roles</h2>
+
+<!-- Modal Edit User Role -->
+<div id="EditUserRoleModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">User Role</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="UserId" class="form-label">User ID</label>
+                        <input type="text" class="form-control" id="UserId" disabled>
+                    </div>
+					<div class="mb-3">
+                        <label for="editRoleId" class="form-label">Role</label>
+                        <select class="form-select" aria-label="roleId" id="editRoleId">
+                            <option hidden>Role</option>
+                            <option value="1">User</option>
+                            <option value="2">Admin</option>
+                            <option value="3">Staff</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="SaveUserRole">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped table-bordered table-hover" id="tableUserRole">
+    <thead class="table-head">
+        <tr>
+            <th scope="col" class="col-1">No</th>
+            <th scope="col" class="col-1">User ID</th>
+@*            <th scope="col" class="col-1">Email</th>*@
+            <th scope="col" class="col-1">Role ID</th>
+            <th scope="col" class="col-1">Action</th>
+        </tr>
+    </thead>
+    <tbody id="tbodyUserRole">
+    </tbody>
+</table>
+
+@section Scripts{
+    <script src="~/js/userRole.js"></script>
+    <script>
+        $(document).ready(function () {
+            // get token from server
+            const token = '@Context.Session.GetString("JWToken")';
+            sessionStorage.setItem("JWToken", token);
+        });
+    </script>
+}
