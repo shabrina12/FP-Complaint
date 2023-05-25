@@ -19,6 +19,31 @@ namespace Complaint_API.Controllers
             _userRepository = userRepository;
         }
 
+        [HttpGet]
+        public override async Task<ActionResult> GetAllAsync()
+        {
+            var results = await _repository.GetAllAsync();
+            if(User.IsInRole("user"))
+            {
+                string email = User.FindFirstValue(ClaimTypes.Email);
+                var user = await _userRepository.GetUserByEmailAsync(email);
+                results = await _repository.GetMyAsync(user.Id);
+            }
+            if (results.Count() is 0)
+            {
+                return NotFound(new
+                {
+                    statusCode = 404,
+                    message = "Data Not Found!"
+                });
+            }
+
+            return Ok(new ResultFormat
+            {
+                Data = results
+            });
+        }
+
         [HttpPost]
         public override async Task<ActionResult> InsertAsync(Order entity)
         {

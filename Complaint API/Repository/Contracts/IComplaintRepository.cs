@@ -4,5 +4,6 @@ namespace Complaint_API.Repository.Contracts
 {
     public interface IComplaintRepository : IGeneralRepository<Complaint, int>
     {
+        public Task<IEnumerable<Complaint>> GetMyAsync(int id);
     }
 }
