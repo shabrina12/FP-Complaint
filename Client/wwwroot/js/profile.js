@@ -12,25 +12,18 @@ $(document).ready(function () {
         datatype: "json",
         headers: headers,
         success: function (data) {
-            let fullName = "";
-            let email = "";
-            let birthDate = "";
-            let phoneNumber = "";
-
-            fullName = `${data.data.profile.firstName} ${data.data.profile.lastName}`
+            let fullName = `${data.data.profile.firstName} ${data.data.profile.lastName}`
             $("#fullName").html(fullName);
-            email = `${data.data.email}`
+
+            let email = `${data.data.email}`
             $("#email").html(email);
 
-            if (data.data.profile.gender === 0) {
-                $("#gender").html("Male");
-            } else if (data.data.profile.gender === 1) {
-                $("#gender").html("Female");
-            }
+            data.data.profile.gender === 0 ? $("#gender").html("Male") : $("#gender").html("Female");
 
-            birthDate = formatDate(1, `${data.data.profile.birthDate}`)
+            let birthDate = formatDate(1, `${data.data.profile.birthDate}`)
             $("#birthDate").html(birthDate);
-            phoneNumber = `${data.data.profile.phoneNumber}`
+
+            let phoneNumber = `${data.data.profile.phoneNumber}`
             $("#phoneNumber").html(phoneNumber);
         }
     });
