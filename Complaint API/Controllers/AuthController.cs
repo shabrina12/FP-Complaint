@@ -1,6 +1,7 @@
 ﻿using Complaint_API.Handlers;
 using Complaint_API.Repository.Contracts;
 using Complaint_API.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -41,7 +42,7 @@ namespace Complaint_API.Controllers
             }
 
             var user = await _userRepository.GetUserByEmailAsync(login.Email);
-            string fullName = user.Profile.FirstName + " " + user.Profile.LastName;
+            string fullName = user.Profile!.FirstName + " " + user.Profile.LastName;
             var claims = new List<Claim>()
                     {
                         new Claim(ClaimTypes.Email, login.Email),
@@ -80,6 +81,22 @@ namespace Complaint_API.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        [Authorize]
+        [HttpGet("me")]
+        public async Task<ActionResult> GetMe()
+        {
+            string email = User.FindFirstValue(ClaimTypes.Email);
+            var user = await _userRepository.GetUserByEmailAsync(email);
+            return Ok(new ResultFormat
+            {
+                Data = new
+                {
+                    user.Email,
+                    user.Profile
+                },
+            });
         }
     }
 }
