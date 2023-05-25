@@ -42,23 +42,25 @@
 						</a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" asp-area="" asp-controller="Role" asp-action="AddRole">
-							<i class="align-middle" data-feather="users"></i> Roles
-						</a>
-					</li>
+					@if (User.IsInRole("admin")) {
+						<li class="sidebar-item">
+							<a class="sidebar-link" asp-area="" asp-controller="Role" asp-action="AddRole">
+								<i class="align-middle" data-feather="users"></i> Roles
+							</a>
+						</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" asp-area="" asp-controller="UserRole" asp-action="Index">
-							<i class="align-middle" data-feather="users"></i> User Roles
-						</a>
-					</li>
+						<li class="sidebar-item">
+							<a class="sidebar-link" asp-area="" asp-controller="UserRole" asp-action="Index">
+								<i class="align-middle" data-feather="users"></i> User Roles
+							</a>
+						</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" asp-area="" asp-controller="Employee" asp-action="Index">
-							<i class="align-middle" data-feather="users"></i> Employees
-						</a>
-					</li>
+						<li class="sidebar-item">
+							<a class="sidebar-link" asp-area="" asp-controller="Employee" asp-action="Index">
+								<i class="align-middle" data-feather="users"></i> Employees
+							</a>
+						</li>
+					}					
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" asp-area="" asp-controller="Profile" asp-action="Index">
