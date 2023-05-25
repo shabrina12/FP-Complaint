@@ -12,14 +12,12 @@ $(document).ready(function () {
         datatype: "json",
         headers: headers,
         success: function (data) {
-            let tes = formatDate(1, data.data.profile.birthDate);
-            console.log(tes);
             let fullName = "";
             let email = "";
             let birthDate = "";
             let phoneNumber = "";
 
-            fullName = `${data.data.profile.firstName} ${data.data.profile.lastName} `
+            fullName = `${data.data.profile.firstName} ${data.data.profile.lastName}`
             $("#fullName").html(fullName);
             email = `${data.data.email}`
             $("#email").html(email);

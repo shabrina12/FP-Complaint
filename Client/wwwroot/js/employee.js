@@ -37,7 +37,4 @@ $(document).ready(function () {
             'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
         ]
     });
-    setInterval(function () {
-        table.ajax.reload();
-    }, 30000);
 });
