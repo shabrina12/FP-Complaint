@@ -76,12 +76,8 @@
     </div>
 
 @section Scripts{
-    <script src="~/js/profile.js"></script>
     <script>
-        $(document).ready(function () {
-            // get token from server
-            const token = '@Context.Session.GetString("JWToken")';
-            sessionStorage.setItem("JWToken", token);
-        });
+        $("li#nav-profile").addClass("active")
     </script>
+    <script src="~/js/profile.js"></script>
 }

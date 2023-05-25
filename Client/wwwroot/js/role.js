@@ -78,7 +78,7 @@ function EditData(id) {
                             timer: 1500
                         });
                         $("#EditRoleModal").modal("hide");
-                        setInterval('location.reload()', 1500);
+                        $('#tableRole').DataTable().ajax.reload();
                     },
                     error: function (er) {
                         Swal.fire({
@@ -110,13 +110,13 @@ function Delete(id) {
                 url: "https://localhost:7127/api/role/" + id,
                 headers: headers,
             }).done((result) => {
-                setInterval('location.reload()', 1500);
+                Swal.fire(
+                    'Deleted!',
+                    'Your data has been deleted.',
+                    'success'
+                );
+                $('#tableRole').DataTable().ajax.reload();
             });
-            Swal.fire(
-                'Deleted!',
-                'Your data has been deleted.',
-                'success'
-            )
         }
     });
 }

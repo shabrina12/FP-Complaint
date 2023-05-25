@@ -22,7 +22,12 @@ $(document).ready(function () {
             },
             { data: "profileId" },
             { data: "fullName" },
-            { data: "gender" },
+            {
+                data: "gender",
+                render: (data) => {
+                    return data == 0 ? "Male" : "Female"
+                }
+            },
             {
                 data: "hiringDate",
                 render: (data) => {

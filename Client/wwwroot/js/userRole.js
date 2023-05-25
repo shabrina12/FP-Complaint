@@ -80,7 +80,7 @@ function EditData(id) {
                             timer: 1500
                         });
                         $("#EditUserRoleModal").modal("hide");
-                        setInterval('location.reload()', 1500);
+                        $('#tableUserRole').DataTable().ajax.reload();
                     },
                     error: function (er) {
                         Swal.fire({

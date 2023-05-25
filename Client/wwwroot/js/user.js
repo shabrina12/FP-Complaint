@@ -22,7 +22,12 @@ $(document).ready(function () {
             },
             { data: "name" },
             { data: "email" },
-            { data: "gender" },
+            {
+                data: "gender",
+                render: (data) => {
+                    return data == 0 ? "Male" : "Female"
+                }
+            },
             {
                 data: "birthDate",
                 render: (data) => {

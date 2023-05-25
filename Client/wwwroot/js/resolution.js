@@ -23,7 +23,22 @@ $(document).ready(function () {
             { data: "employeeId" },
             { data: "complaintId" },
             { data: "description" },
-            { data: "status" },
+            {
+                data: "status",
+                render: (data) => {
+                    switch (data) {
+                        case 0:
+                            return `<div class="btn btn-danger">Rejected</div>`
+                            break;
+                        case 1:
+                            return `<div class="btn btn-success">Accepted</div>`
+                            break;
+                        default:
+                            return `<div class="btn btn-warning">Draft</div>`
+                            break;
+                    }
+                }
+            },
             {
                 data: "dateCreated",
                 render: (data) => {
@@ -102,7 +117,7 @@ function EditData(id) {
                             timer: 1500
                         });
                         $("#EditResolutionModal").modal("hide");
-                        setInterval('location.reload()', 1500);
+                        $('#tableResolution').DataTable().ajax.reload();
                     },
                     error: function (er) {
                         Swal.fire({
@@ -134,13 +149,13 @@ function Delete(id) {
                 url: "https://localhost:7127/api/resolution/" + id,
                 headers: headers,
             }).done((result) => {
-                setInterval('location.reload()', 1500);
+                Swal.fire(
+                    'Deleted!',
+                    'Your data has been deleted.',
+                    'success'
+                );
+                $('#tableResolution').DataTable().ajax.reload();
             });
-            Swal.fire(
-                'Deleted!',
-                'Your data has been deleted.',
-                'success'
-            )
         }
     });
 }

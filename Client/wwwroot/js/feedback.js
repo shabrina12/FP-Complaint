@@ -85,7 +85,7 @@ function EditData(id) {
                             timer: 1500
                         });
                         $("#EditFeedbackModal").modal("hide");
-                        setInterval('location.reload()', 1500);
+                        $('#tableFeedback').DataTable().ajax.reload();
                     },
                     error: function (er) {
                         Swal.fire({
@@ -117,13 +117,13 @@ function Delete(id) {
                 url: "https://localhost:7127/api/feedback/" + id,
                 headers: headers,
             }).done((result) => {
-                setInterval('location.reload()', 1500);
+                Swal.fire(
+                    'Deleted!',
+                    'Your data has been deleted.',
+                    'success'
+                );
+                $('#tableFeedback').DataTable().ajax.reload();
             });
-            Swal.fire(
-                'Deleted!',
-                'Your data has been deleted.',
-                'success'
-            )
         }
     });
 }

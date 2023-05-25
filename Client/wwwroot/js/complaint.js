@@ -23,15 +23,36 @@ $(document).ready(function () {
             { data: "title" },
             { data: "description" },
             { data: "orderId" },
-            { data: "status" },
+            {
+                data: "status",
+                width: "12%",
+                render: (data) => {
+                    switch (data) {
+                        case 0:
+                            return `<div class="btn btn-warning">Submitted</div>`
+                            break;
+                        case 1:
+                            return `<div class="btn btn-info">On Process</div>`
+                            break;
+                        case 2:
+                            return `<div class="btn btn-success">Completed</div>`
+                            break;
+                        default:
+                            return "Unknown"
+                            break;
+                    }
+                }
+            },
             {
                 data: "dateCreated",
+                width: "12%",
                 render: (data) => {
                     return formatDate(2, data)
                 }
             },
             {
                 data: "dateUpdated",
+                width: "12%",
                 render: (data) => {
                     return formatDate(2, data)
                 }
@@ -107,7 +128,7 @@ function EditData(id) {
                             timer: 1500
                         });
                         $("#EditComplaintModal").modal("hide");
-                        setInterval('location.reload()', 1500);
+                        $('#tableComplaint').DataTable().ajax.reload();
                     },
                     error: function (er) {
                         Swal.fire({
@@ -139,13 +160,13 @@ function Delete(id) {
                 url: "https://localhost:7127/api/complaint/" + id,
                 headers: headers,
             }).done((result) => {
-                setInterval('location.reload()', 1500);
+                Swal.fire(
+                    'Deleted!',
+                    'Your data has been deleted.',
+                    'success'
+                );
+                $('#tableComplaint').DataTable().ajax.reload();
             });
-            Swal.fire(
-                'Deleted!',
-                'Your data has been deleted.',
-                'success'
-            )
         }
     });
 }
