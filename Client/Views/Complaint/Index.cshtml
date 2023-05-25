@@ -18,7 +18,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="editOrderId" class="form-label">Order ID</label>
-                        <input type="text" class="form-control" id="editOrderId" required>
+                        <input type="text" class="form-control" id="editOrderId" disabled>
                     </div>
                 </form>
             </div>
@@ -41,9 +41,14 @@
             <th scope="col" class="col-2">Description</th>
             <th scope="col" class="col-1">Order ID</th>
             <th scope="col" class="col-1">Status</th>
-            <th scope="col" class="col-1">Created At</th>
-            <th scope="col" class="col-1">Updated At</th>
-             <th scope="col" class="col-2">Action</th>
+            <th scope="col" class="col-2">Created At</th>
+            <th scope="col" class="col-2">Updated At</th>
+            <th scope="col" class="col-2">Action</th>
+            <th scope="col" class="col-1">Resolution</th>
+         @*   @if (User.IsInRole("admin") || User.IsInRole("staff"))
+            {
+                <th scope="col" class="col-1">Resolution</th>
+            }*@
         </tr>
     </thead>
     <tbody id="tbodyComplaint">

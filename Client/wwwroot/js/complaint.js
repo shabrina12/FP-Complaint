@@ -43,6 +43,12 @@ $(document).ready(function () {
                     <button class="btn btn-danger" onclick="Delete(${row.id})" data-bs-toggle="modal">Delete</button>`
                 }
             },
+            {
+                data: "",
+                render: (data, type, row) => {
+                    return `<a class="btn btn-primary" href="/resolution/addresolution">Resolution</a>`
+                }
+            },
         ],
         aLengthMenu: [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
         iDisplayLength: 5,
@@ -74,7 +80,6 @@ function EditData(id) {
             $("#SaveComplaint").click(function () {
                 var newTitle = $("#editTitle").val();
                 var newDesc = $("#editDesc").val();
-                var newOrderId = $("#editOrderId").val();
      
                 $.ajax({
                     type: "PUT",
@@ -83,9 +88,9 @@ function EditData(id) {
                         id: id,
                         title: newTitle,
                         description: newDesc,
-                        orderId: newOrderId,
-                        status: data.data.status,
-                        dateCreated: data.data.dateCreated, 
+                        orderId: obj.orderId,
+                        status: obj.status,
+                        dateCreated: obj.dateCreated, 
                         dateUpdated: new Date()
                     }),
                     datatype: "json",

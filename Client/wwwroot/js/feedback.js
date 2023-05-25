@@ -67,7 +67,7 @@ function EditData(id) {
                     url: url,
                     data: JSON.stringify({
                         id: id,
-                        resolutionId: data.data.resolutionId,
+                        resolutionId: obj.resolutionId,
                         description: newDesc,
                         rating: newRating,
                     }),

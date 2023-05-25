@@ -63,7 +63,7 @@ function EditData(id) {
                     url: url,
                     data: JSON.stringify({
                         id: id,
-                        userId: data.data.userId,
+                        userId: obj.userId,
                         roleId: newRoleId,
                     }),
                     datatype: "json",

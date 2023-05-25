@@ -81,11 +81,11 @@ function EditData(id) {
                     url: url,
                     data: JSON.stringify({
                         id: id,
-                        employeeId: data.data.employeeId,
-                        complaintId: data.data.complaintId,
+                        employeeId: obj.employeeId,
+                        complaintId: obj.complaintId,
                         description: newDesc,
                         status: newStatus,
-                        dateCreated: data.data.dateCreated, 
+                        dateCreated: obj.dateCreated, 
                         dateUpdated: new Date()
                     }),
                     datatype: "json",
