@@ -29,13 +29,13 @@ $(document).ready(function () {
                 render: (data) => {
                     switch (data) {
                         case 0:
-                            return `<div class="btn btn-warning">Submitted</div>`
+                            return `<div class="btn btn-warning btn-fill">Submitted</div>`
                             break;
                         case 1:
-                            return `<div class="btn btn-info">On Process</div>`
+                            return `<div class="btn btn-info btn-fill">On Process</div>`
                             break;
                         case 2:
-                            return `<div class="btn btn-success">Completed</div>`
+                            return `<div class="btn btn-success btn-fill">Completed</div>`
                             break;
                         default:
                             return "Unknown"
@@ -60,14 +60,14 @@ $(document).ready(function () {
             {
                 data: "",
                 render: (data, type, row) => {
-                    return `<button class="btn btn-success" onclick="EditData(${row.id})" data-bs-toggle="modal">Edit</button>
-                    <button class="btn btn-danger" onclick="Delete(${row.id})" data-bs-toggle="modal">Delete</button>`
+                    return `<button class="btn btn-success btn-fill" onclick="EditData(${row.id})" data-bs-toggle="modal">Edit</button>
+                    <button class="btn btn-danger btn-fill" onclick="Delete(${row.id})" data-bs-toggle="modal">Delete</button>`
                 }
             },
             {
                 data: "",
                 render: (data, type, row) => {
-                    return `<button class="btn btn-primary" onclick="addResolution(${row.id})">Resolution</button>`
+                    return `<button class="btn btn-primary btn-fill" onclick="addResolution(${row.id})">Resolution</button>`
                 }
             },
         ],

@@ -12838,10 +12838,16 @@ body {
             color: rgba(233,236,239,.75)
         }
 
+
+li.sidebar-item:hover {
+    transform: translateX(10px);
+}
+
 .sidebar-item.active .sidebar-link:hover, .sidebar-item.active > .sidebar-link {
     background: linear-gradient(90deg,rgba(59,125,221,.1),rgba(59,125,221,.088) 50%,transparent);
     border-left-color: #3b7ddd;
-    color: #e9ecef
+    color: #e9ecef;
+    transform: translateX(10px);
 }
 
     .sidebar-item.active .sidebar-link:hover i, .sidebar-item.active .sidebar-link:hover svg, .sidebar-item.active > .sidebar-link i, .sidebar-item.active > .sidebar-link svg {
