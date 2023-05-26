@@ -1,4 +1,44 @@
-﻿<!-- Modal Edit -->
+﻿@model Client.ViewModels.ResolutionVM
+
+<!-- Modal Add Resolution -->
+<div id="AddResolutionModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Resolution</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="AddResolution" asp-controller="Resolution">
+                    <div class="mb-3">
+                        <label for="editEmployeeId" class="form-label">Employee ID</label>
+                        <input asp-for="EmployeeId" class="form-control" type="text" id="editEmployeeId" required />
+                        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                    @*    <select asp-for="EmployeeId" class="form-select" id="editEmployeeId" required>
+                            <option hidden>Choose Employee ID</option>
+                            <option value="1">1 star</option>
+                            <option value="2">2 stars</option>
+                            <option value="3">3 stars</option>
+                            <option value="4">4 stars</option>
+                            <option value="5">5 stars</option>
+                        </select>
+                        <span asp-validation-for="EmployeeId" class="text-danger"></span>*@
+                    </div>
+                    <div class="mb-3">
+                        <label for="editComplaintId" type class="form-label" style="display: none;">Complaint ID</label>
+                        <input asp-for="ComplaintId" class="form-control" type="hidden" id="editComplaintId" required />
+                        <span asp-validation-for="ComplaintId" class="text-danger"></span>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-lg btn-primary" value="AddResolution">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Edit Complaint -->
 <div id="EditComplaintModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -14,7 +54,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="editDesc" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="editDesc" required>
+                        <textarea rows="10" cols="70" class="form-control" id="editDesc" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="editOrderId" class="form-label">Order ID</label>
@@ -31,7 +71,7 @@
 </div>
 
 <h2>Table Complaint Data</h2>
-<a class="nav-link mb-3" asp-area="" asp-controller="Complaint" asp-action="AddComplaint">New Complaint</a>
+<a class="btn btn-primary my-3" asp-area="" asp-controller="Complaint" asp-action="AddComplaint">New Complaint</a>
 
 <table class="table table-striped table-bordered table-hover" id="tableComplaint">
     <thead class="table-head">
@@ -45,10 +85,6 @@
             <th scope="col" class="col-2">Updated At</th>
             <th scope="col" class="col-2">Action</th>
             <th scope="col" class="col-1">Resolution</th>
-         @*   @if (User.IsInRole("admin") || User.IsInRole("staff"))
-            {
-                <th scope="col" class="col-1">Resolution</th>
-            }*@
         </tr>
     </thead>
     <tbody id="tbodyComplaint">

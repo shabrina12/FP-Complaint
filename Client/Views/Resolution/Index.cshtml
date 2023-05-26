@@ -18,10 +18,10 @@
                     </div>
                     <div class="mb-3">
                         <label for="editDesc" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="editDesc" required>
+                        <textarea rows="10" cols="70" class="form-control" id="editDesc" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="editStatus" class="form-label">Role</label>
+                        <label for="editStatus" class="form-label">Status</label>
                         <select class="form-select" aria-label="status" id="editStatus">
                             <option hidden>Status</option>
                             <option value="0">rejected</option>
@@ -39,7 +39,6 @@
 </div>
 
 <h2>Table Resolution</h2>
-<a class="nav-link mb-3" asp-area="" asp-controller="Resolution" asp-action="AddResolution">New Resolution</a>
 
 <table class="table table-striped table-bordered table-hover" id="tableResolution">
     <thead class="table-head">

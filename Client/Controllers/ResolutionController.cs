@@ -45,7 +45,7 @@ namespace Client.Controllers
             else if (result.StatusCode == "200")
             {
                 TempData["Success"] = $"Data has been Successfully Registered! - {result.Message}!";
-                return RedirectToAction("Index", "Resolution");
+                return RedirectToAction("Index", "Complaint");
             }
             return View();
         }

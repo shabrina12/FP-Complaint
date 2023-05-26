@@ -67,7 +67,7 @@ $(document).ready(function () {
             {
                 data: "",
                 render: (data, type, row) => {
-                    return `<a class="btn btn-primary" href="/resolution/addresolution">Resolution</a>`
+                    return `<button class="btn btn-primary" onclick="addResolution(${row.id})">Resolution</button>`
                 }
             },
         ],
@@ -79,6 +79,11 @@ $(document).ready(function () {
         ]
     });
 });
+
+function addResolution(id) {
+    $("#AddResolutionModal").modal("show");
+    $("#editComplaintId").val(id);
+}
 
 // Edit record by id
 function EditData(id) {
