@@ -7,7 +7,19 @@ namespace Complaint_API.Repository
 {
     public class ResolutionRepository : GeneralRepository<Resolution, int, MyContext>, IResolutionRepository
     {
-        public ResolutionRepository(MyContext context) : base(context) { }
+        private readonly IComplaintRepository _complaintRepository;
+        public ResolutionRepository(MyContext context, IComplaintRepository complaintRepository) : base(context) {
+            _complaintRepository = complaintRepository;
+        }
+        public async Task<IEnumerable<Resolution>> GetMyAsync(int id)
+        {
+            var resolutions = await GetAllAsync();
+            var complaints = await _complaintRepository.GetMyAsync(id);
+            var resolution = from c in complaints
+                             join r in resolutions on c.Id equals r.ComplaintId
+                            select r;
+            return resolution;
+        }
 
         public override async Task<Resolution?> InsertAsync(Resolution entity)
         {

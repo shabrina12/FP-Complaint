@@ -6,13 +6,42 @@ using Complaint_API.ViewModels.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using System.Security.Claims;
 
 namespace Complaint_API.Controllers
 {
     [Authorize]
     public class ResolutionController : BaseController<IResolutionRepository, Resolution, int>
     {
-        public ResolutionController(IResolutionRepository repository) : base(repository) { }
+        private readonly IUserRepository _userRepository;
+        public ResolutionController(IResolutionRepository repository, IUserRepository userRepository) : base(repository) {
+            _userRepository = userRepository;
+        }
+
+        [HttpGet]
+        public override async Task<ActionResult> GetAllAsync()
+        {
+            var results = await _repository.GetAllAsync();
+            if (User.IsInRole("user"))
+            {
+                string email = User.FindFirstValue(ClaimTypes.Email);
+                var user = await _userRepository.GetUserByEmailAsync(email);
+                results = await _repository.GetMyAsync(user.Id);
+            }
+            if (results.Count() is 0)
+            {
+                return NotFound(new
+                {
+                    statusCode = 404,
+                    message = "Data Not Found!"
+                });
+            }
+
+            return Ok(new ResultFormat
+            {
+                Data = results
+            });
+        }
 
         [ApiExplorerSettings(IgnoreApi = true)]
         [NonAction]
