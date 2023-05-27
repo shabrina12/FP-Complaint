@@ -30,8 +30,8 @@
                 searchable: false,
                 render: function (data) {
                     return `
-                        <button class="btn btn-sm btn-warning complaint-btn"><i class="fa fa-file-text" aria-hidden="true"></i> Complaint</button>
-                        <button onclick="deleteOrder(${data})" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                        <button class="btn btn-sm btn-warning btn-fill complaint-btn"><i class="fa fa-file-text" aria-hidden="true"></i> Complaint</button>
+                        <button onclick="deleteOrder(${data})" class="btn btn-sm btn-danger btn-fill"><i class="fa fa-trash"></i> Delete</button>
                     `
                 }
             }
@@ -60,6 +60,12 @@ function addOrder() {
         data: JSON.stringify(data)
     }).done((res) => {
         $("#table").DataTable().ajax.reload()
+        Swal.fire({
+            icon: 'success',
+            title: 'Success Add Order',
+            showConfirmButton: false,
+            timer: 1000
+        })
     }).fail((e) => {
         console.log(e.status + ' ' + e.statusText)
     })

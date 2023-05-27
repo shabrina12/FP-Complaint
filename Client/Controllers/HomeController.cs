@@ -5,28 +5,19 @@ using System.Diagnostics;
 
 namespace Client.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        public HomeController() { }
 
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         [AllowAnonymous]
         [HttpGet("/Unauthorized")]
-        public IActionResult Unauthorized()
+        public IActionResult UnauthorizedAction()
         {
             return View("401");
         }

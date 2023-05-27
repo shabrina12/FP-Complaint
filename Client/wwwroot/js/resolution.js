@@ -28,13 +28,13 @@ $(document).ready(function () {
                 render: (data) => {
                     switch (data) {
                         case 0:
-                            return `<div class="btn btn-danger">Rejected</div>`
+                            return `<div class="btn btn-danger btn-fill">Rejected</div>`
                             break;
                         case 1:
-                            return `<div class="btn btn-success">Accepted</div>`
+                            return `<div class="btn btn-success btn-fill">Accepted</div>`
                             break;
                         default:
-                            return `<div class="btn btn-warning">Draft</div>`
+                            return `<div class="btn btn-warning btn-fill">Draft</div>`
                             break;
                     }
                 }
@@ -54,8 +54,8 @@ $(document).ready(function () {
             {
                 data: "",
                 render: (data, type, row) => {
-                    return `<button class="btn btn-success" onclick="EditData(${row.id})" data-bs-toggle="modal">Edit</button>
-                    <button class="btn btn-danger" onclick="Delete(${row.id})" data-bs-toggle="modal">Delete</button>`
+                    return `<button class="btn btn-success btn-fill" onclick="EditData(${row.id})" data-bs-toggle="modal">Edit</button>
+                    <button class="btn btn-danger btn-fill" onclick="Delete(${row.id})" data-bs-toggle="modal">Delete</button>`
                 }
             },
         ],

@@ -2,9 +2,11 @@
 using Client.Repository;
 using Client.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Client.Controllers
 {
+    [Authorize]
 	public class UserController : Controller
 	{
         public IActionResult Index()

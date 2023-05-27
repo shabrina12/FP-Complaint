@@ -66,12 +66,15 @@ $(document).ready(function () {
             },
             {
                 data: "",
-                width: "15%",
                 render: (data, type, row) => {
+                    if (isAdmin == "False") {
+                        return null
+                    }
                     return `<button class="btn btn-primary btn-fill" onclick="addResolution(${row.id})">
                                 Assign
                             </button>`
-                }
+                },
+                width: "15%"
             },
         ],
         aLengthMenu: [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
@@ -115,7 +118,6 @@ function EditData(id) {
         headers: headers,
         success: function (data) {
             var obj = data.data;
-            console.log(data.data);
             $("#editTitle").val(obj.title);
             $("#editDesc").val(obj.description);
             $("#editOrderId").val(obj.orderId);

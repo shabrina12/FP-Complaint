@@ -2,9 +2,11 @@
 using Client.Repository.Interface;
 using Client.Repository;
 using Client.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Client.Controllers
 {
+	[Authorize]
     public class ComplaintController : Controller
     {
 		private readonly IComplaintRepository repository;
