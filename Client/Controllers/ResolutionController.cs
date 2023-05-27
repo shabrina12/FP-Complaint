@@ -42,7 +42,7 @@ namespace Client.Controllers
                 TempData["Error"] = $"Something Went Wrong! - {result.Message}!";
                 return View();
             }
-            else if (result.StatusCode == "200")
+            else if (result.StatusCode == "201")
             {
                 TempData["Success"] = $"Data has been Successfully Registered! - {result.Message}!";
                 return RedirectToAction("Index", "Complaint");

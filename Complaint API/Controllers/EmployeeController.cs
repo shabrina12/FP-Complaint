@@ -1,6 +1,7 @@
 ﻿using Complaint_API.Base;
 using Complaint_API.Models;
 using Complaint_API.Repository.Contracts;
+using Complaint_API.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -10,11 +11,7 @@ namespace Complaint_API.Controllers
     [Authorize(Roles = "admin")]
     public class EmployeeController : BaseController<IEmployeeRepository, Employee, int>
     {
-        private readonly IEmployeeRepository _repository;
-        public EmployeeController(IEmployeeRepository repository) : base(repository)
-        {
-            _repository = repository;
-        }
+        public EmployeeController(IEmployeeRepository repository) : base(repository) { }
 
         [HttpGet("Master")]
         public async Task<ActionResult> EmployeeData()
@@ -33,6 +30,16 @@ namespace Complaint_API.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        [HttpGet("staff")]
+        public async Task<ActionResult> StaffData()
+        {
+            var results = await _repository.GetAllStaffAsync();
+            return Ok(new ResultFormat
+            {
+                Data = results
+            });
         }
     }
 }

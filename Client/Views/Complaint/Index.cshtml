@@ -1,28 +1,24 @@
 ﻿@model Client.ViewModels.ResolutionVM
+@{
+    ViewData["Title"] = "Complaint";
+}
 
 <!-- Modal Add Resolution -->
 <div id="AddResolutionModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Resolution</h4>
+                <h4 class="modal-title">Assign Staff for Complaint</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
             </div>
             <div class="modal-body">
                 <form asp-action="AddResolution" asp-controller="Resolution">
                     <div class="mb-3">
-                        <label for="editEmployeeId" class="form-label">Employee ID</label>
-                        <input asp-for="EmployeeId" class="form-control" type="text" id="editEmployeeId" required />
-                        <span asp-validation-for="EmployeeId" class="text-danger"></span>
-                    @*    <select asp-for="EmployeeId" class="form-select" id="editEmployeeId" required>
-                            <option hidden>Choose Employee ID</option>
-                            <option value="1">1 star</option>
-                            <option value="2">2 stars</option>
-                            <option value="3">3 stars</option>
-                            <option value="4">4 stars</option>
-                            <option value="5">5 stars</option>
+                        <label for="editEmployeeId" class="form-label">Employee Staff</label>
+                        <select asp-for="EmployeeId" class="form-control" id="editEmployeeId" required>
+                            <option value="">--Please choose a staff--</option>
                         </select>
-                        <span asp-validation-for="EmployeeId" class="text-danger"></span>*@
+                        <span asp-validation-for="EmployeeId" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label for="editComplaintId" type class="form-label" style="display: none;">Complaint ID</label>

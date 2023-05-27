@@ -66,8 +66,11 @@ $(document).ready(function () {
             },
             {
                 data: "",
+                width: "15%",
                 render: (data, type, row) => {
-                    return `<button class="btn btn-primary btn-fill" onclick="addResolution(${row.id})">Resolution</button>`
+                    return `<button class="btn btn-primary btn-fill" onclick="addResolution(${row.id})">
+                                Assign
+                            </button>`
                 }
             },
         ],
@@ -77,6 +80,20 @@ $(document).ready(function () {
         buttons: [
             'copyHtml5', 'excelHtml5', 'csvHtml5', 'pdfHtml5'
         ]
+    });
+
+    $.ajax({
+        url: "https://localhost:7127/api/employee/staff",
+        headers: {
+            Authorization: 'Bearer ' + token,
+        }
+    }).done((result) => {
+        let data = result.data;
+        data.forEach(item => {
+            $("#editEmployeeId").append(`
+                <option value="${item.id}">${item.name} </option >
+            `);
+        })
     });
 });
 
