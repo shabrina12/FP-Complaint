@@ -85,19 +85,21 @@ $(document).ready(function () {
         ]
     });
 
-    $.ajax({
-        url: "https://localhost:7127/api/employee/staff",
-        headers: {
-            Authorization: 'Bearer ' + token,
-        }
-    }).done((result) => {
-        let data = result.data;
-        data.forEach(item => {
-            $("#editEmployeeId").append(`
+    if (isAdmin == "True") {
+        $.ajax({
+            url: "https://localhost:7127/api/employee/staff",
+            headers: {
+                Authorization: 'Bearer ' + token,
+            }
+        }).done((result) => {
+            let data = result.data;
+            data.forEach(item => {
+                $("#editEmployeeId").append(`
                 <option value="${item.id}">${item.name} </option >
             `);
-        })
-    });
+            })
+        });
+    };
 });
 
 function addResolution(id) {

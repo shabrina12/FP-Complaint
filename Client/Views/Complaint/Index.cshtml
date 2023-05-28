@@ -67,7 +67,11 @@
 </div>
 
 <h2>Table Complaint Data</h2>
-<a class="btn btn-primary my-3 w-auto btn-fill" asp-area="" asp-controller="Complaint" asp-action="AddComplaint">New Complaint</a>
+
+@if(User.IsInRole("user"))
+{
+    <a class="btn btn-primary my-3 w-auto btn-fill" asp-area="" asp-controller="Complaint" asp-action="AddComplaint">New Complaint</a>
+}
 
 <table class="table table-striped table-bordered table-hover" id="tableComplaint">
     <thead class="table-head">

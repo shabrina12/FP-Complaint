@@ -30,8 +30,12 @@
                 searchable: false,
                 render: function (data) {
                     return `
-                        <button class="btn btn-sm btn-warning btn-fill complaint-btn"><i class="fa fa-file-text" aria-hidden="true"></i> Complaint</button>
-                        <button onclick="deleteOrder(${data})" class="btn btn-sm btn-danger btn-fill"><i class="fa fa-trash"></i> Delete</button>
+                        <button onclick="addComplaint(${data})" type="button" class="btn btn-sm btn-warning btn-fill complaint-btn" data-bs-toggle="modal" data-bs-target="#addComplaintModal">
+                            <i class="fa fa-file-text" aria-hidden="true"></i> Complaint
+                        </button>
+                        <button onclick="deleteOrder(${data})" class="btn btn-sm btn-danger btn-fill">
+                            <i class="fa fa-trash"></i> Delete
+                        </button>
                     `
                 }
             }
@@ -83,4 +87,8 @@ function deleteOrder(id) {
     }).fail((e) => {
         console.log(e.status + ' ' + e.statusText)
     })
+}
+
+function addComplaint(id) {
+    $("#orderIdInput").val(id);
 }
