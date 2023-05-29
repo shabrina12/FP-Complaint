@@ -2,12 +2,99 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="mb-4">
+	<h2 style="display: inline;" id="greeting"></h2><h2 style="display: inline;">, @User.Identity!.Name</h2>
 </div>
 
+<div class="row">
+	<div class="col">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col mt-0">
+						<h5 class="card-title">Orders</h5>
+					</div>
+
+					<div class="col-auto">
+						<div class="stat text-primary">
+							<i class="align-middle" data-feather="shopping-cart"></i>
+						</div>
+					</div>
+				</div>
+				<h1 id="orderCount" class="mt-1 mb-3">2</h1>
+			</div>
+		</div>
+	</div>
+	<div class="col">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col mt-0">
+						<h5 class="card-title">Feedbacks</h5>
+					</div>
+
+					<div class="col-auto">
+						<div class="stat text-primary">
+							<i class="align-middle" data-feather="message-circle"></i>
+						</div>
+					</div>
+				</div>
+				<h1 id="orderCount" class="mt-1 mb-3">2</h1>
+			</div>
+		</div>
+	</div>
+	<div class="col">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col mt-0">
+						<h5 class="card-title">Complaints</h5>
+					</div>
+
+					<div class="col-auto">
+						<div class="stat text-primary">
+							<i class="align-middle" data-feather="file-text"></i>
+						</div>
+					</div>
+				</div>
+				<h1 id="orderCount" class="mt-1 mb-3">2</h1>
+			</div>
+		</div>
+	</div>
+	<div class="col">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col mt-0">
+						<h5 class="card-title">Resolutions</h5>
+					</div>
+
+					<div class="col-auto">
+						<div class="stat text-primary">
+							<i class="align-middle" data-feather="file-text"></i>
+						</div>
+					</div>
+				</div>
+				<h1 id="orderCount" class="mt-1 mb-3">2</h1>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 @section Scripts{
+    <script>
+        const time = new Date().getHours();
+        let greeting;
+        if (time < 12) {
+            greeting = "Good Morning";
+        } else if (time >= 12 && time <= 17) {
+            greeting = "Good Afternoon";
+        } else {
+            greeting = "Good evening";
+        }
+        document.getElementById("greeting").innerText = greeting;
+    </script>
     <script>
         $("li#nav-home").addClass("active")
         $(document).ready(function () {
@@ -16,4 +103,5 @@
             sessionStorage.setItem("JWToken", token);
         });
     </script>
+	<script src="~/js/order.js"></script>
 }
