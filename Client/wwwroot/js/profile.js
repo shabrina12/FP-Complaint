@@ -18,7 +18,15 @@ $(document).ready(function () {
             let email = `${data.data.email}`
             $("#email").html(email);
 
-            data.data.profile.gender === 0 ? $("#gender").html("Male") : $("#gender").html("Female");
+            if (data.data.profile.gender === 0) {
+                $("#gender").html("Male")
+                var imageshown = "/img/male.jpg"
+            } else if (data.data.profile.gender === 1) {
+                $("#gender").html("Female")
+                var imageshown = "/img/female.jpg"
+            }
+
+            document.getElementById('profileImage').src = imageshown;
 
             let birthDate = formatDate(1, `${data.data.profile.birthDate}`)
             $("#birthDate").html(birthDate);
