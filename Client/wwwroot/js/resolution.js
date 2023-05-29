@@ -58,6 +58,15 @@ $(document).ready(function () {
                     <button class="btn btn-danger btn-fill" onclick="Delete(${row.id})" data-bs-toggle="modal">Delete</button>`
                 }
             },
+            {
+                data: "",
+                render: (data, type, row) => {
+                    return `<button class="btn btn-primary btn-fill" onclick="addFeedback(${row.id})">
+                                Feedback
+                            </button>`                
+                },
+                width: "15%"
+            },
         ],
         aLengthMenu: [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
         iDisplayLength: 5,
@@ -67,6 +76,11 @@ $(document).ready(function () {
         ]
     });
 });
+
+function addFeedback(id) {
+    $("#AddFeedbackModal").modal("show");
+    $("#resolutionId").val(id);
+}
 
 // Edit record by id
 function EditData(id) {
@@ -81,7 +95,6 @@ function EditData(id) {
         headers: headers,
         success: function (data) {
             var obj = data.data;
-            console.log(data.data);
             $("#employeeId").val(obj.employeeId);
             $("#complaintId").val(obj.complaintId);
             $("#editDesc").val(obj.description);
@@ -101,7 +114,7 @@ function EditData(id) {
                         description: newDesc,
                         status: newStatus,
                         dateCreated: obj.dateCreated, 
-                        dateUpdated: new Date().getTime()
+                        dateUpdated: new Date()
                     }),
                     datatype: "json",
                     headers: {

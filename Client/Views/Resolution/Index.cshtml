@@ -1,6 +1,46 @@
-﻿@{
+﻿@model Client.ViewModels.FeedbackVM
+
+@{
     ViewData["Title"] = "Resolution";
 }
+<!-- Modal Add Feedback -->
+<div class="modal fade" id="AddFeedbackModal" tabindex="-1" aria-labelledby="addFeedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addFeedbackModalLabel">Add Feedback</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="AddFeedback" asp-controller="Feedback">
+                    <div>
+                        @*<label for="resolutionId" class="form-label">Resolution ID</label>*@
+                        <input asp-for="ResolutionId" class="form-control" type="hidden" id="resolutionId" required />                        
+                    </div>
+                    <div class="mb-3">
+                        <textarea asp-for="Description" class="form-control" placeholder="Description" rows="5" style="height: 150px;"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <select asp-for="Rating" class="form-select" required>
+                            <option hidden>Rating</option>
+                            <option value="1">1 star</option>
+                            <option value="2">2 stars</option>
+                            <option value="3">3 stars</option>
+                            <option value="4">4 stars</option>
+                            <option value="5">5 stars</option>
+                        </select>
+                        <span asp-validation-for="Rating" class="text-danger"></span>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-primary btn-fill" value="AddFeedback">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal Edit -->
 <div id="EditResolutionModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -57,6 +97,7 @@
             <th scope="col" class="col-1">Created At</th>
             <th scope="col" class="col-1">Updated At</th>
             <th scope="col" class="col-2">Action</th>
+            <th scope="col" class="col-1">Feedback</th>          
         </tr>
     </thead>
     <tbody id="tbodyResolution">
