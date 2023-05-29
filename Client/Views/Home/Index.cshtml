@@ -2,83 +2,70 @@
     ViewData["Title"] = "Home Page";
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/dashboard.css" />
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+}
+
 <div class="mb-4">
 	<h2 style="display: inline;" id="greeting"></h2><h2 style="display: inline;">, @User.Identity!.Name</h2>
 </div>
 
 <div class="row">
-	<div class="col">
-		<div class="card">
-			<div class="card-body">
-				<div class="row">
-					<div class="col mt-0">
-						<h5 class="card-title">Orders</h5>
-					</div>
-
-					<div class="col-auto">
-						<div class="stat text-primary">
-							<i class="align-middle" data-feather="shopping-cart"></i>
-						</div>
-					</div>
-				</div>
-				<h1 id="orderCount" class="mt-1 mb-3">2</h1>
+	<div class="col-lg-3 col-6">
+		<div class="small-box bg-primary">
+			<div class="inner">
+				<h3 id="orderCount">0</h3>
+				<p>Orders</p>
 			</div>
+			<div class="icon">
+				<i class="ion ion-bag"></i>
+			</div>
+			<a href="/order/index" class="small-box-footer">
+				More info <i class="ion ion-arrow-right-c"></i>
+			</a>
 		</div>
 	</div>
-	<div class="col">
-		<div class="card">
-			<div class="card-body">
-				<div class="row">
-					<div class="col mt-0">
-						<h5 class="card-title">Feedbacks</h5>
-					</div>
 
-					<div class="col-auto">
-						<div class="stat text-primary">
-							<i class="align-middle" data-feather="message-circle"></i>
-						</div>
-					</div>
-				</div>
-				<h1 id="orderCount" class="mt-1 mb-3">2</h1>
+	<div class="col-lg-3 col-6">
+		<div class="small-box bg-warning">
+			<div class="inner">
+				<h3 id="complaintCount">0</h3>
+				<p>Complaints</p>
 			</div>
+			<div class="icon">
+				<i class="ion ion-clipboard"></i>
+			</div>
+			<a href="/complaint/index" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
 		</div>
 	</div>
-	<div class="col">
-		<div class="card">
-			<div class="card-body">
-				<div class="row">
-					<div class="col mt-0">
-						<h5 class="card-title">Complaints</h5>
-					</div>
 
-					<div class="col-auto">
-						<div class="stat text-primary">
-							<i class="align-middle" data-feather="file-text"></i>
-						</div>
-					</div>
-				</div>
-				<h1 id="orderCount" class="mt-1 mb-3">2</h1>
+	<div class="col-lg-3 col-6">
+		<div class="small-box bg-success">
+			<div class="inner">
+				<h3 id="resolutionCount">0</h3>
+				<p>Resolutions</p>
 			</div>
+			<div class="icon">
+				<i class="ion ion-ios-lightbulb"></i>
+			</div>
+			<a href="/resolution/index" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
 		</div>
 	</div>
-	<div class="col">
-		<div class="card">
-			<div class="card-body">
-				<div class="row">
-					<div class="col mt-0">
-						<h5 class="card-title">Resolutions</h5>
-					</div>
 
-					<div class="col-auto">
-						<div class="stat text-primary">
-							<i class="align-middle" data-feather="file-text"></i>
-						</div>
-					</div>
-				</div>
-				<h1 id="orderCount" class="mt-1 mb-3">2</h1>
+	<div class="col-lg-3 col-6">
+		<div class="small-box bg-info">
+			<div class="inner">
+				<h3 id="feedbackCount">0</h3>
+				<p>Feedbacks</p>
 			</div>
+			<div class="icon">
+				<i class="ion ion-chatboxes"></i>
+			</div>
+			<a href="feedback/index" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
 		</div>
 	</div>
+
 </div>
 
 
@@ -103,5 +90,5 @@
             sessionStorage.setItem("JWToken", token);
         });
     </script>
-	<script src="~/js/order.js"></script>
+    <script src="~/js/dashboard.js"></script>
 }
