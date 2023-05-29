@@ -23,14 +23,17 @@
                         <label for="editDesc" class="form-label">Description</label>
                         <textarea rows="10" cols="70" class="form-control" id="editDesc" required></textarea>
                     </div>
-                    <div class="mb-3">
-                        <label for="editStatus" class="form-label">Status</label>
-                        <select class="form-select" aria-label="status" id="editStatus">
-                            <option hidden>Status</option>
-                            <option value="0">rejected</option>
-                            <option value="1">accepted</option>
-                        </select>
-                    </div>
+                    @if(User.IsInRole("user"))
+                    {
+                        <div class="mb-3">
+                            <label for="editStatus" class="form-label">Status</label>
+                            <select class="form-select" aria-label="status" id="editStatus">
+                                <option hidden>Status</option>
+                                <option value="0">rejected</option>
+                                <option value="1">accepted</option>
+                            </select>
+                        </div>
+                    }
                 </form>
             </div>
             <div class="modal-footer">

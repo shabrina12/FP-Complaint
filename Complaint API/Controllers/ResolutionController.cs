@@ -22,11 +22,15 @@ namespace Complaint_API.Controllers
         public override async Task<ActionResult> GetAllAsync()
         {
             var results = await _repository.GetAllAsync();
+            string email = User.FindFirstValue(ClaimTypes.Email);
+            var user = await _userRepository.GetUserByEmailAsync(email);
             if (User.IsInRole("user"))
             {
-                string email = User.FindFirstValue(ClaimTypes.Email);
-                var user = await _userRepository.GetUserByEmailAsync(email);
                 results = await _repository.GetMyAsync(user.Id);
+            }
+            else if (User.IsInRole("staff"))
+            {
+                results = await _repository.GetStaffResolutionAsync(user.Id);
             }
             if (results.Count() is 0)
             {

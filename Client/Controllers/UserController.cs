@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Client.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
 	public class UserController : Controller
 	{
         public IActionResult Index()

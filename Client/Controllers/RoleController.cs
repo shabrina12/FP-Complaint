@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Client.Controllers
 {
-    [Authorize]
+	[Authorize(Roles = "admin")]
 	public class RoleController : Controller
 	{
         private readonly IRoleRepository repository;

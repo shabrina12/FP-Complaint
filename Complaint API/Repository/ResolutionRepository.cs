@@ -8,8 +8,18 @@ namespace Complaint_API.Repository
     public class ResolutionRepository : GeneralRepository<Resolution, int, MyContext>, IResolutionRepository
     {
         private readonly IComplaintRepository _complaintRepository;
-        public ResolutionRepository(MyContext context, IComplaintRepository complaintRepository) : base(context) {
+        private readonly IProfileRepository _profileRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IEmployeeRepository _employeeRepository;
+        public ResolutionRepository(MyContext context, 
+            IComplaintRepository complaintRepository,
+            IProfileRepository profileRepository,
+            IUserRepository userRepository,
+            IEmployeeRepository employeeRepository) : base(context) {
             _complaintRepository = complaintRepository;
+            _profileRepository = profileRepository;
+            _userRepository = userRepository;
+            _employeeRepository = employeeRepository;
         }
         public async Task<IEnumerable<Resolution>> GetMyAsync(int id)
         {
@@ -18,6 +28,21 @@ namespace Complaint_API.Repository
             var resolution = from c in complaints
                              join r in resolutions on c.Id equals r.ComplaintId
                             select r;
+            return resolution;
+        }
+
+        public async Task<IEnumerable<Resolution>> GetStaffResolutionAsync(int id)
+        {
+            var users = await _userRepository.GetAllAsync();
+            var profiles = await _profileRepository.GetAllAsync();
+            var employees = await _employeeRepository.GetAllAsync();
+            var allResolutions = await GetAllAsync();
+            var resolution = from e in employees
+                             join p in profiles on e.ProfileId equals p.Id
+                             join u in users on p.Id equals u.ProfileId
+                             join re in allResolutions on e.Id equals re.EmployeeId
+                             where u.Id == id
+                             select re;
             return resolution;
         }
 

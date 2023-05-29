@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Client.Controllers
 {
-    [Authorize]
-    public class UserRoleController : Controller
+	[Authorize(Roles = "admin")]
+	public class UserRoleController : Controller
     {
         public IActionResult Index()
         {

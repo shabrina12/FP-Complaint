@@ -101,7 +101,7 @@ function EditData(id) {
                         description: newDesc,
                         status: newStatus,
                         dateCreated: obj.dateCreated, 
-                        dateUpdated: new Date()
+                        dateUpdated: new Date().getTime()
                     }),
                     datatype: "json",
                     headers: {

@@ -35,14 +35,21 @@
 							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
 						</a>
 					</li>
-					
-					<li class="sidebar-item" id="nav-user">
-						<a class="sidebar-link" asp-area="" asp-controller="User" asp-action="Index">
-							<i class="align-middle" data-feather="users"></i> Users
+
+					<li class="sidebar-item" id="nav-profile">
+						<a class="sidebar-link" asp-area="" asp-controller="Profile" asp-action="Index">
+							<i class="align-middle" data-feather="user"></i> Profile
 						</a>
 					</li>
 
-					@if (User.IsInRole("admin")) {
+					@if (User.IsInRole("admin"))
+					{
+						<li class="sidebar-item" id="nav-user">
+							<a class="sidebar-link" asp-area="" asp-controller="User" asp-action="Index">
+								<i class="align-middle" data-feather="users"></i> Users
+							</a>
+						</li>
+
 						<li class="sidebar-item" id="nav-role">
 							<a class="sidebar-link" asp-area="" asp-controller="Role" asp-action="AddRole">
 								<i class="align-middle" data-feather="book"></i> Roles
@@ -60,19 +67,13 @@
 								<i class="align-middle" data-feather="database"></i> Employees
 							</a>
 						</li>
-					}					
 
-					<li class="sidebar-item" id="nav-profile">
-						<a class="sidebar-link" asp-area="" asp-controller="Profile" asp-action="Index">
-							<i class="align-middle" data-feather="user"></i> Profile
-						</a>
-					</li>
-
-					<li class="sidebar-item" id="nav-complaint">
-						<a class="sidebar-link" asp-area="" asp-controller="Complaint" asp-action="Index">
-							<i class="align-middle" data-feather="file-text"></i> Complaints
-						</a>
-					</li>
+						<li class="sidebar-item" id="nav-complaint">
+							<a class="sidebar-link" asp-area="" asp-controller="Complaint" asp-action="Index">
+								<i class="align-middle" data-feather="file-text"></i> Complaints
+							</a>
+						</li>
+					}
 
 					<li class="sidebar-item" id="nav-resolution">
 						<a class="sidebar-link" asp-area="" asp-controller="Resolution" asp-action="Index">

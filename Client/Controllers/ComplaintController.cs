@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Client.Controllers
 {
-	[Authorize]
+	[Authorize(Roles = "admin,user")]
     public class ComplaintController : Controller
     {
 		private readonly IComplaintRepository repository;
