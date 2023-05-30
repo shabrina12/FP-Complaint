@@ -4,60 +4,46 @@
 	ViewData["Title"] = "Login";
 }
 
-<main class="d-flex w-100">
-	<div class="container d-flex flex-column">
-		<div class="row vh-100">
-			<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
-				<div class="d-table-cell align-middle">
-
-					<div class="text-center mt-4">
-						<h1 class="h2">Welcome back</h1>
-						<p class="lead">
-							Sign in to your account to continue
-						</p>
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                     class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form asp-action="Login">
+					<div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+						<h1 class="lead fw-normal mb-0 me-3">Sign In</h1>
+					</div>
+					<div class="divider d-flex align-items-center my-4">
 					</div>
 
-					<div class="card">
-						<div class="card-body">
-							<div class="m-sm-4">
-								<form asp-action="Login">
-									<div class="mb-3">
-										<label asp-for="Email" class="form-label">Email</label>
-										<input asp-for="Email" class="form-control form-control-lg" placeholder="Enter your email" />
-										<span asp-validation-for="Email" class="text-danger"></span>
-									</div>
-									<div class="mb-3">
-										<label asp-for="Password" class="form-label">Password</label>
-										<input asp-for="Password" class="form-control" placeholder="Enter your password" />
-										<span asp-validation-for="Password" class="text-danger"></span>
-										@*<small>
-											<a href="index.html">Forgot password?</a>
-										</small>*@
-									</div>
-									@*<div>
-										<label class="form-check">
-											<input class="form-check-input" type="checkbox" value="remember-me" name="remember-me" checked>
-											<span class="form-check-label">
-												Remember me next time
-											</span>
-										</label>
-									</div>*@
-									<div class="text-center mt-3">
-										<button type="submit" class="btn btn-lg btn-primary" value="Login">Sign In</button>
-									</div>
-								</form>														
-							</div>
-							<div>
-								<a asp-action="Register">Don't have an account? Register here</a>
-							</div>
-						</div>
-					</div>
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input type="email" asp-for="Email" id="form3Example3" class="form-control form-control-lg" placeholder="Email Address" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
 
-				</div>
-			</div>
-		</div>
-	</div>
-</main>
+                    <!-- Password input -->
+                    <div class="form-outline mb-3">
+                        <input type="password" asp-for="Password" id="form3Example4" class="form-control form-control-lg" placeholder="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>                    
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+						<button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                            Login
+                        </button>
+                        <p class="small fw-bold mt-2 pt-1 mb-0">
+							Don't have an account? <a asp-action="Register" class="link-danger">Register</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 @section Scripts {
 	@{
