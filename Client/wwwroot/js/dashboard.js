@@ -1,8 +1,16 @@
 ﻿$(document).ready(function () {
-    getEntityCount("order")
-    getEntityCount("complaint")
-    getEntityCount("resolution")
-    getEntityCount("feedback")
+    if (isAdmin) {
+        getEntityCount("user")
+        getEntityCount("employee")
+    }
+    if (isAdmin || isStaff) {
+        getEntityCount("resolution")
+        getEntityCount("feedback")
+    }
+    if (isAdmin || isUser) {
+        getEntityCount("order")
+        getEntityCount("complaint")
+    }
 })
 
 function getEntityCount(entity) {

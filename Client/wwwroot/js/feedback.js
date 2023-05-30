@@ -53,7 +53,6 @@ function EditData(id) {
         headers: headers,
         success: function (data) {
             var obj = data.data;
-            console.log(data.data);
             $("#resolutionId").val(obj.resolutionId);
             $("#editDesc").val(obj.description);
             $("#editRating").val(obj.rating);

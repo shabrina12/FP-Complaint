@@ -12,60 +12,98 @@
 </div>
 
 <div class="row">
-	<div class="col-lg-3 col-6">
-		<div class="small-box bg-primary">
-			<div class="inner">
-				<h3 id="orderCount">0</h3>
-				<p>Orders</p>
+	@if (User.IsInRole("admin"))
+	{
+		<div class="col-lg-3 col-6">
+			<div class="small-box bg-success">
+				<div class="inner">
+					<h3 id="userCount">0</h3>
+					<p>Users</p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-person"></i>
+				</div>
+				<a href="/order/index" class="small-box-footer">
+					More info <i class="ion ion-arrow-right-c"></i>
+				</a>
 			</div>
-			<div class="icon">
-				<i class="ion ion-bag"></i>
-			</div>
-			<a href="/order/index" class="small-box-footer">
-				More info <i class="ion ion-arrow-right-c"></i>
-			</a>
 		</div>
-	</div>
 
-	<div class="col-lg-3 col-6">
-		<div class="small-box bg-warning">
-			<div class="inner">
-				<h3 id="complaintCount">0</h3>
-				<p>Complaints</p>
+		<div class="col-lg-3 col-6">
+			<div class="small-box bg-info">
+				<div class="inner">
+					<h3 id="employeeCount">0</h3>
+					<p>Employees</p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-ios-people"></i>
+				</div>
+				<a href="/order/index" class="small-box-footer">
+					More info <i class="ion ion-arrow-right-c"></i>
+				</a>
 			</div>
-			<div class="icon">
-				<i class="ion ion-clipboard"></i>
-			</div>
-			<a href="/complaint/index" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
 		</div>
-	</div>
+	}
 
-	<div class="col-lg-3 col-6">
-		<div class="small-box bg-success">
-			<div class="inner">
-				<h3 id="resolutionCount">0</h3>
-				<p>Resolutions</p>
+	@if(User.IsInRole("admin") || User.IsInRole("user"))
+	{
+		<div class="col-lg-3 col-6">
+			<div class="small-box bg-primary">
+				<div class="inner">
+					<h3 id="orderCount">0</h3>
+					<p>Orders</p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-bag"></i>
+				</div>
+				<a href="/order/index" class="small-box-footer">
+					More info <i class="ion ion-arrow-right-c"></i>
+				</a>
 			</div>
-			<div class="icon">
-				<i class="ion ion-ios-lightbulb"></i>
-			</div>
-			<a href="/resolution/index" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
 		</div>
-	</div>
 
-	<div class="col-lg-3 col-6">
-		<div class="small-box bg-info">
-			<div class="inner">
-				<h3 id="feedbackCount">0</h3>
-				<p>Feedbacks</p>
+		<div class="col-lg-3 col-6">
+			<div class="small-box bg-warning">
+				<div class="inner">
+					<h3 id="complaintCount">0</h3>
+					<p>Complaints</p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-clipboard"></i>
+				</div>
+				<a href="/complaint/index" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
 			</div>
-			<div class="icon">
-				<i class="ion ion-chatboxes"></i>
-			</div>
-			<a href="feedback/index" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
 		</div>
-	</div>
+	}
 
+	@if (User.IsInRole("admin") || User.IsInRole("staff"))
+	{
+		<div class="col-lg-3 col-6">
+			<div class="small-box bg-success">
+				<div class="inner">
+					<h3 id="resolutionCount">0</h3>
+					<p>Resolutions</p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-ios-lightbulb"></i>
+				</div>
+				<a href="/resolution/index" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-6">
+			<div class="small-box bg-info">
+				<div class="inner">
+					<h3 id="feedbackCount">0</h3>
+					<p>Feedbacks</p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-chatboxes"></i>
+				</div>
+				<a href="feedback/index" class="small-box-footer">More info <i class="ion ion-arrow-right-c"></i></a>
+			</div>
+		</div>
+	}
 </div>
 
 
@@ -81,6 +119,9 @@
             greeting = "Good evening";
         }
         document.getElementById("greeting").innerText = greeting;
+		const isAdmin = '@User.IsInRole("admin")' === 'True'
+		const isStaff = '@User.IsInRole("staff")' === 'True'
+		const isUser = '@User.IsInRole("user")' === 'True'
     </script>
     <script>
         $("li#nav-home").addClass("active")
