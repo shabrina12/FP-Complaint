@@ -42,7 +42,7 @@
 </div>
 
 <!-- Modal Edit -->
-<div id="EditResolutionModal" class="modal fade" role="dialog">
+<div id="EditResolutionModal" class="modal fade" tabindex="-1" aria-labelledby="detailResolutionModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -51,18 +51,35 @@
             </div>
             <div class="modal-body">
                 <form method="post">
+                    <input type="hidden" id="resolutionId" />
+                    <input type="hidden" id="resolutionCreated" />
                     <div class="mb-3">
-                        <label for="employeeId" class="form-label">Employee ID</label>
-                        <input type="text" class="form-control" id="employeeId" disabled>
+                        <label for="employeeId" class="visually-hidden">Employee ID</label>
+                        <input type="hidden" class="form-control" id="employeeId" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="complaintId" class="form-label">Complaint ID</label>
-                        <input type="text" class="form-control" id="complaintId" disabled>
+                        <label for="complaintId" class="visually-hidden">Complaint ID</label>
+                        <input type="hidden" class="form-control" id="complaintId" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="editDesc" class="form-label">Description</label>
+                        <label for="complaintTitle" class="form-label fw-bold">Complaint Title</label>
+                        <input type="text" class="form-control-plaintext border px-2" id="complaintTitle" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="complaintDesc" class="form-label fw-bold">Complaint Description</label>
+                        <textarea class="form-control-plaintext border px-2" id="complaintDesc" style="height: 100px;" readonly></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editDesc" class="form-label fw-bold">Description</label>
                         <textarea rows="10" cols="70" class="form-control" id="editDesc" required></textarea>
                     </div>
+                    @if (User.IsInRole("staff"))
+                    {
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="completedResolution">
+                            <label class="form-check-label" for="completedResolution">Mark as completed</label>
+                        </div>
+                    }
                     @if(User.IsInRole("user"))
                     {
                         <div class="mb-3">
@@ -73,6 +90,9 @@
                                 <option value="1">accepted</option>
                             </select>
                         </div>
+                    } else
+                    {
+                        <input type="hidden" id="editStatus" />
                     }
                 </form>
             </div>
@@ -90,7 +110,6 @@
     <thead class="table-head">
         <tr>
             <th scope="col" class="col-1">No</th>
-            <th scope="col" class="col-1">Employee ID</th>
             <th scope="col" class="col-1">Complaint ID</th>
             <th scope="col" class="col-1">Description</th>
             <th scope="col" class="col-1">Status</th>

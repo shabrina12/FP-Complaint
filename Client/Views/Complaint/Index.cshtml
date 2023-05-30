@@ -3,6 +3,41 @@
     ViewData["Title"] = "Complaint";
 }
 
+@section Styles {
+    <style>
+        .modal.show .modal-dialog {
+            transform: none;
+        }
+    </style>
+}
+<!-- Modal Detail Resolution -->
+<div id="detailResolutionModal" class="modal fade" tabindex="-1" aria-labelledby="detailResolutionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title fw-bold" id="detailResolutionModalLabel">Resolution Detail</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="complaintTitle" class="form-label fw-bold">Complaint Title</label>
+                        <input type="text" class="form-control-plaintext border px-2" id="complaintTitle" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="complaintDesc" class="form-label fw-bold">Complaint Description</label>
+                        <textarea class="form-control-plaintext border px-2" id="complaintDesc" style="height: 100px;" readonly></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="resolutionDesc" class="form-label fw-bold">Resolution Description</label>
+                        <textarea class="form-control-plaintext border px-2" id="resolutionDesc" style="height: 100px;" readonly></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal Add Resolution -->
 <div id="AddResolutionModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -50,11 +85,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="editDesc" class="form-label">Description</label>
-                        <textarea rows="10" cols="70" class="form-control" id="editDesc" required></textarea>
+                        <textarea rows="10" cols="70" class="form-control" id="editDesc" required style="height: 150px;"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="editOrderId" class="form-label">Order ID</label>
-                        <input type="text" class="form-control" id="editOrderId" disabled>
+                        <label for="editOrderId" class="form-label sr-only">Order ID</label>
+                        <input type="hidden" class="form-control" id="editOrderId" disabled>
                     </div>
                 </form>
             </div>
@@ -95,6 +130,7 @@
     <script>
         $("li#nav-complaint").addClass("active")
         let isAdmin = '@User.IsInRole("admin")'
+        let isUser = '@User.IsInRole("user")' === "True"
     </script>
     <script src="~/js/complaint.js"></script>
 }

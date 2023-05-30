@@ -23,7 +23,7 @@
 				<div class="icon">
 					<i class="ion ion-person"></i>
 				</div>
-				<a href="/order/index" class="small-box-footer">
+				<a href="/user/index" class="small-box-footer">
 					More info <i class="ion ion-arrow-right-c"></i>
 				</a>
 			</div>
@@ -38,7 +38,7 @@
 				<div class="icon">
 					<i class="ion ion-ios-people"></i>
 				</div>
-				<a href="/order/index" class="small-box-footer">
+				<a href="/employee/index" class="small-box-footer">
 					More info <i class="ion ion-arrow-right-c"></i>
 				</a>
 			</div>
@@ -129,6 +129,14 @@
             // get token from server
             const token = '@Context.Session.GetString("JWToken")';
             sessionStorage.setItem("JWToken", token);
+			$.ajax({
+				url: "https://localhost:7127/api/auth/me",
+				headers: {
+					Authorization: "Bearer " + token
+				}
+			}).done((result) => {
+				localStorage.setItem("user", result.data.email)
+			})
         });
     </script>
     <script src="~/js/dashboard.js"></script>

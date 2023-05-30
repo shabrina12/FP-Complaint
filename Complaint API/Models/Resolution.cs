@@ -19,7 +19,7 @@ namespace Complaint_API.Models
         public DateTime DateCreated { get; set; }
         public DateTime DateUpdated { get; set; }
 
-        [JsonIgnore]
+        
         public virtual Complaint? Complaint { get; set; }
         [JsonIgnore]
         public virtual Employee? Employee { get; set; }

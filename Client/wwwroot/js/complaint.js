@@ -68,7 +68,11 @@ $(document).ready(function () {
                 data: "",
                 render: (data, type, row) => {
                     if (isAdmin == "False") {
-                        return null
+                        let primary = row.status == 2 ? "primary" : "secondary"
+                        let disabledBtn = row.status == 2 ? "" : "disabled"
+                        return `<button class="btn btn-${primary} btn-fill" onclick="showResolution(${row.id})" ${disabledBtn} data-bs-toggle="modal" data-bs-target="#detailResolutionModal">
+                                    View
+                                </button>`
                     }
                     return `<button class="btn btn-primary btn-fill" onclick="addResolution(${row.id})">
                                 Assign
@@ -105,6 +109,31 @@ $(document).ready(function () {
 function addResolution(id) {
     $("#AddResolutionModal").modal("show");
     $("#editComplaintId").val(id);
+}
+
+function showResolution(id) {
+    let allResolution;
+    let complaintResolution;
+    $.ajax({
+        url: "https://localhost:7127/api/complaint/"+id,
+        headers: {
+            Authorization: "Bearer " + token
+        }
+    }).done((result) => {
+        let data = result.data
+        $("#complaintTitle").val(data.title)
+        $("#complaintDesc").val(data.description)
+    });
+    $.ajax({
+        url: "https://localhost:7127/api/resolution",
+        headers: {
+            Authorization: "Bearer " + token
+        }
+    }).done((result) => {
+        allResolution = result.data
+        complaintResolution = allResolution.filter(r => r.complaintId == id)[0]
+        $("#resolutionDesc").val(complaintResolution.description)
+    });
 }
 
 // Edit record by id

@@ -21,6 +21,17 @@ namespace Complaint_API.Repository
             _userRepository = userRepository;
             _employeeRepository = employeeRepository;
         }
+
+        public override async Task<IEnumerable<Resolution>> GetAllAsync()
+        {
+            return await _context.Set<Resolution>().Include(r => r.Complaint).ToListAsync();
+        }
+
+        public override async Task<Resolution?> GetByIdAsync(int key)
+        {
+            return await _context.Set<Resolution>().Include(r => r.Complaint).FirstOrDefaultAsync(r => r.Id == key);
+        }
+
         public async Task<IEnumerable<Resolution>> GetMyAsync(int id)
         {
             var resolutions = await GetAllAsync();

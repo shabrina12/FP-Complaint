@@ -1,6 +1,7 @@
 ﻿using Complaint_API.Contexts;
 using Complaint_API.Models;
 using Complaint_API.Repository.Contracts;
+using Complaint_API.ViewModels.Request;
 using Microsoft.EntityFrameworkCore;
 
 namespace Complaint_API.Repository
@@ -20,6 +21,18 @@ namespace Complaint_API.Repository
                             join c in complaints on o.Id equals c.OrderId
                             select c;
             return complaint;
+        }
+
+        public async Task<int> ChangeStatusAsync(ComplaintChangeStatusVM request)
+        {
+            var complaint = await _context.Complaints.FindAsync(request.ComplaintId);
+            if (complaint == null)
+            {
+                return 0;
+            }
+            complaint.Status = request.Status;
+            _context.Complaints.Update(complaint);
+            return await _context.SaveChangesAsync();
         }
     }
 }

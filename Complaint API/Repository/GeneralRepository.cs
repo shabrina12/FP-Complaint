@@ -22,7 +22,7 @@ namespace Complaint_API.Repository
 
 
         // GET BY ID
-        public async Task<TEntity?> GetByIdAsync(TKey key)
+        public virtual async Task<TEntity?> GetByIdAsync(TKey key)
         {
             return await _context.Set<TEntity>().FindAsync(key);
         }

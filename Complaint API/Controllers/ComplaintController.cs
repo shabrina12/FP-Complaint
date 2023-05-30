@@ -85,5 +85,18 @@ namespace Complaint_API.Controllers
             var result = await InsertAsync(entity);
             return result;
         }
+
+        [HttpPost("changestatus")]
+        public async Task<ActionResult> ChangeStatusAsync(ComplaintChangeStatusVM request)
+        {
+            int result = await _repository.ChangeStatusAsync(request);
+            var resultFormat = new ResultFormat { Data = result };
+            if(result == 0)
+            {
+                resultFormat.ChangeStatus(StatusCodes.Status404NotFound, "Not Found", "Complaint ID not found");
+                return NotFound(resultFormat);
+            }
+            return Ok(resultFormat);
+        }
     }
 }
