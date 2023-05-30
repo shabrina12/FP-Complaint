@@ -4,71 +4,78 @@
 	ViewData["Title"] = "Register";
 }
 
-<main class="d-flex">
-	<div class="container d-flex flex-column">
-		<div class="row vh-100">
-			<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
-				<div class="d-table-cell align-middle">
+<section>
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+				<div class="card shadow-4-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+                        <form asp-action="Register">
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input asp-for="FirstName" class="form-control form-control-lg" placeholder="First Name" />
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input asp-for="LastName" class="form-control form-control-lg" placeholder="Last Name" />
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
 
-					<div class="text-center mt-4">
-						<h1 class="h2">Register Form</h1>
-						<p class="lead">
-							Start creating the best possible user experience for you customers.
-						</p>
-					</div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4 d-flex align-items-center">
+                                    <div class="form-outline datepicker w-100">
+                                        <input asp-for="BirthDate" class="form-control" type="text" onfocus="(this.type='date')" placeholder="Birth Date" />
+                                        <span asp-validation-for="BirthDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+									<select class="form-select" aria-label="Gender" id="Gender">
+										<option hidden>Gender</option>
+										<option value="0">Male</option>
+										<option value="1">Female</option>
+									</select>
+                                </div>
+                            </div>
 
-					<div class="card">
-						<div class="card-body">
-								<form asp-action="Register">						
-									<div class="row">
-										<div class="col mb-3">
-											<input asp-for="FirstName" class="form-control form-control-lg" placeholder="First Name" />
-											<span asp-validation-for="FirstName" class="text-danger"></span>
-										</div>
-										<div class="col mb-3">
-											<input asp-for="FirstName" class="form-control form-control-lg" placeholder="Last Name" />
-											<span asp-validation-for="FirstName" class="text-danger"></span>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col mb-3">
-											<select class="form-select" aria-label="Gender" id="Gender">
-												<option hidden>Gender</option>
-												<option value="0">Male</option>
-												<option value="1">Female</option>
-											</select>
-										</div>
-										<div class="col mb-3">
-											<input asp-for="BirthDate" class="form-control" type="text" onfocus="(this.type='date')" placeholder="Birth Date" />
-											<span asp-validation-for="BirthDate" class="text-danger"></span>
-										</div>
-									</div>
-									<div class="col mb-3">
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+                                    <div class="form-outline">
+										<input asp-for="Email" class="form-control" placeholder="Email" />
+										<span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+                                    <div class="form-outline">
 										<input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" />
 										<span asp-validation-for="PhoneNumber" class="text-danger"></span>
-									</div>
-									<div class="row">
-										<div class="col mb-3">
-											<input asp-for="Email" class="form-control" placeholder="Email" />
-											<span asp-validation-for="Email" class="text-danger"></span>
-										</div>
-										<div class="col mb-3">
-											<input asp-for="Password" class="form-control" placeholder="Password" />
-											<span asp-validation-for="Password" class="text-danger"></span>
-										</div>
-									</div>
-									<div class="text-center mt-3">
-										<button type="submit" class="btn btn-lg btn-primary" value="Register">Sign Up</button>
-									</div>
-									<a asp-action="Login">Back to Login</a>
-								</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</main>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+									<input asp-for="Password" class="form-control" placeholder="Password" />
+									<span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="my-4 pt-2">
+								<button type="submit" class="btn btn-lg btn-primary" value="Register">Sign Up</button>
+                            </div>
+							<a asp-action="Login">Back to Login</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 @section Scripts {
 	@{

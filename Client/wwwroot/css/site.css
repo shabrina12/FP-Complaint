@@ -18,6 +18,7 @@ body {
   margin-bottom: 60px;
 }
 
+/*-------------Style for Login page------------*/
 .divider:after,
 .divider:before {
     content: "";
@@ -34,4 +35,16 @@ body {
     .h-custom {
         height: 100%;
     }
+}
+
+/*-------------------Style for register page-----------*/
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+}
+
+.card-registration .select-arrow {
+    top: 13px;
 }
