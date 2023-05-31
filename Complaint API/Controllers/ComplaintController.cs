@@ -87,7 +87,7 @@ namespace Complaint_API.Controllers
         }
 
         [HttpPost("changestatus")]
-        public async Task<ActionResult> ChangeStatusAsync(ComplaintChangeStatusVM request)
+        public async Task<ActionResult> ChangeStatusAsync(ChangeStatusVM request)
         {
             int result = await _repository.ChangeStatusAsync(request);
             var resultFormat = new ResultFormat { Data = result };

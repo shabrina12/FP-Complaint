@@ -132,6 +132,7 @@ function showResolution(id) {
     }).done((result) => {
         allResolution = result.data
         complaintResolution = allResolution.filter(r => r.complaintId == id)[0]
+        $("#resolutionId").val(complaintResolution.id)
         $("#resolutionDesc").val(complaintResolution.description)
     });
 }
@@ -224,4 +225,97 @@ function Delete(id) {
             });
         }
     });
+}
+
+
+//accept resolution
+$("#acceptButton").on("click", function () {
+    let data = {
+        entityId: $("#resolutionId").val(),
+        status: 1
+    }
+    changeResolutionStatus(data)
+
+})
+
+//reject resolution
+$("#rejectButton").on("click", function () {
+    let data = {
+        entityId: $("#resolutionId").val(),
+        status: 0
+    }
+    changeResolutionStatus(data)
+})
+
+//change resolution status
+function changeResolutionStatus(data) {
+    $.ajax({
+        url: "https://localhost:7127/api/resolution/changestatus",
+        method: "POST",
+        headers: headers,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data)
+    }).done((result) => {
+        $("#detailResolutionModal").modal("hide")
+        Swal.fire({
+            icon: 'success',
+            title: 'Successfully update data',
+            showConfirmButton: false,
+            timer: 1000
+        });
+        $("#feedbackModal").modal("show")
+        $("#feedbackResolutionId").val(data.entityId)
+    }).fail((e) => {
+        console.log(e)
+        $("#detailResolutionModal").modal("hide")
+        Swal.fire({
+            icon: 'error',
+            title: 'Failed to update data',
+            showConfirmButton: false,
+            timer: 1000
+        });
+    })
+}
+
+//submit feedback
+$("#feedbackSubmit").on("click", function () {
+    let resolutionId = $("#feedbackResolutionId").val()
+    let feedbackDesc = $("#feedbackDesc").val()
+    let feedbackRating = $("#feedbackRating").val()
+    const data = {
+        resolutionId,
+        description: feedbackDesc,
+        rating: feedbackRating
+    }
+    submitFeedback(data)
+})
+
+function submitFeedback(data) {
+    $.ajax({
+        url: "https://localhost:7127/api/feedback",
+        method: "POST",
+        headers: headers,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data)
+    }).done((result) => {
+        $("#feedbackModal").modal("hide")
+        $("#feedbackResolutionId").val("")
+        $("#feedbackDesc").val("")
+        $("#feedbackRating").val("5")
+        Swal.fire({
+            icon: 'success',
+            title: 'Thanks for your feedback',
+            showConfirmButton: false,
+            timer: 1000
+        });
+    }).fail((e) => {
+        console.log(e)
+        $("#feedbackModal").modal("hide")
+        Swal.fire({
+            icon: 'error',
+            title: 'Failed to submit feedback',
+            showConfirmButton: false,
+            timer: 1000
+        });
+    })
 }

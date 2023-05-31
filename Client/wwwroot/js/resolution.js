@@ -163,7 +163,7 @@ $("#SaveResolution").click(function () {
             headers: headers,
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({
-                complaintId: $("#complaintId").val(),
+                entityId: $("#complaintId").val(),
                 status: 2
             })
         }).fail((e) => {

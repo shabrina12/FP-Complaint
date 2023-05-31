@@ -23,14 +23,15 @@ namespace Complaint_API.Repository
             return complaint;
         }
 
-        public async Task<int> ChangeStatusAsync(ComplaintChangeStatusVM request)
+        public async Task<int> ChangeStatusAsync(ChangeStatusVM request)
         {
-            var complaint = await _context.Complaints.FindAsync(request.ComplaintId);
+            var complaint = await _context.Complaints.FindAsync(request.EntityId);
             if (complaint == null)
             {
                 return 0;
             }
             complaint.Status = request.Status;
+            complaint.DateUpdated = DateTime.Now;
             _context.Complaints.Update(complaint);
             return await _context.SaveChangesAsync();
         }

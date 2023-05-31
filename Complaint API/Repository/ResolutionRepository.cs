@@ -1,6 +1,7 @@
 ﻿using Complaint_API.Contexts;
 using Complaint_API.Models;
 using Complaint_API.Repository.Contracts;
+using Complaint_API.ViewModels.Request;
 using Microsoft.EntityFrameworkCore;
 
 namespace Complaint_API.Repository
@@ -67,6 +68,19 @@ namespace Complaint_API.Repository
 
             await _context.SaveChangesAsync();
             return entity;
+        }
+
+        public async Task<int> ChangeStatusAsync(ChangeStatusVM request)
+        {
+            var resolution = await _context.Resolutions.FindAsync(request.EntityId);
+            if (resolution == null)
+            {
+                return 0;
+            }
+            resolution.Status = request.Status;
+            resolution.DateUpdated = DateTime.Now;
+            _context.Resolutions.Update(resolution);
+            return await _context.SaveChangesAsync();
         }
     }
 }

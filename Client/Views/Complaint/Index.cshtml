@@ -10,6 +10,41 @@
         }
     </style>
 }
+
+<!-- Modal Feedback Form -->
+<div id="feedbackModal" class="modal fade" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header border-bottom">
+                <h4 class="modal-title fw-bold" id="feedbackModalLabel">Feedback Form</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="feedbackResolutionId" />
+                    <div class="mb-3">
+                        <label for="feedbackDesc" class="form-label fw-bold">Description</label>
+                        <textarea class="form-control-plaintext border px-2" id="feedbackDesc" style="height: 100px;" placeholder="(optional)"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="feedbackRating" class="form-label fw-bold">Rating</label>
+                        <select class="form-select" id="feedbackRating" required>
+                            <option value="1">1 star</option>
+                            <option value="2">2 stars</option>
+                            <option value="3">3 stars</option>
+                            <option value="4">4 stars</option>
+                            <option value="5" selected>5 stars</option>
+                        </select>
+                     </div>
+                </form>
+            </div>
+            <div class="modal-footer border pt-3 justify-content-end">
+                <button class="btn btn-primary btn-fill" id="feedbackSubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal Detail Resolution -->
 <div id="detailResolutionModal" class="modal fade" tabindex="-1" aria-labelledby="detailResolutionModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -20,6 +55,7 @@
             </div>
             <div class="modal-body">
                 <form>
+                    <input type="hidden" id="resolutionId" />
                     <div class="mb-3">
                         <label for="complaintTitle" class="form-label fw-bold">Complaint Title</label>
                         <input type="text" class="form-control-plaintext border px-2" id="complaintTitle" readonly>
@@ -33,6 +69,10 @@
                         <textarea class="form-control-plaintext border px-2" id="resolutionDesc" style="height: 100px;" readonly></textarea>
                     </div>
                 </form>
+            </div>
+            <div class="modal-footer border pt-3">
+                <button class="btn btn-danger btn-fill" id="rejectButton">Reject</button>
+                <button class="btn btn-success btn-fill" id="acceptButton">Accept</button>
             </div>
         </div>
     </div>

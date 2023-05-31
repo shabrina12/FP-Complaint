@@ -1,4 +1,5 @@
 ﻿using Complaint_API.Models;
+using Complaint_API.ViewModels.Request;
 
 namespace Complaint_API.Repository.Contracts
 {
@@ -6,5 +7,6 @@ namespace Complaint_API.Repository.Contracts
     {
         Task<IEnumerable<Resolution>> GetMyAsync(int id);
         Task<IEnumerable<Resolution>> GetStaffResolutionAsync(int id);
+        Task<int> ChangeStatusAsync(ChangeStatusVM request);
     }
 }
