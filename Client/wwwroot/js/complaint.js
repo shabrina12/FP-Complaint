@@ -20,8 +20,11 @@ $(document).ready(function () {
                     return meta.row + 1;
                 }
             },
-            { data: "title" },
-            { data: "description" },
+            {
+                data: "title",
+                width: "20%"
+            },
+            /*{ data: "description" },*/
             { data: "orderId" },
             {
                 data: "status",
@@ -134,6 +137,23 @@ function showResolution(id) {
         complaintResolution = allResolution.filter(r => r.complaintId == id)[0]
         $("#resolutionId").val(complaintResolution.id)
         $("#resolutionDesc").val(complaintResolution.description)
+        if (complaintResolution.status != null) {
+            console.log("hidden")
+            $("#actionGroup").addClass("visually-hidden")
+            $("#statusText").removeClass("visually-hidden")
+            if (complaintResolution.status == 0) {
+                $("#statusText").text("You rejected this solution")
+                $("#statusText").removeClass("btn-success")
+                $("#statusText").addClass("btn-danger")
+            } else {
+                $("#statusText").text("You accepted this solution")
+                $("#statusText").removeClass("btn-danger")
+                $("#statusText").addClass("btn-success")
+            }
+        } else {
+            $("#actionGroup").removeClass("visually-hidden")
+            $("#statusText").addClass("visually-hidden")
+        }
     });
 }
 
@@ -281,7 +301,8 @@ function changeResolutionStatus(data) {
 $("#feedbackSubmit").on("click", function () {
     let resolutionId = $("#feedbackResolutionId").val()
     let feedbackDesc = $("#feedbackDesc").val()
-    let feedbackRating = $("#feedbackRating").val()
+    /*let feedbackRating = $("#feedbackRating").val()*/
+    let feedbackRating = $('input[name="rating"]:checked').val();
     const data = {
         resolutionId,
         description: feedbackDesc,

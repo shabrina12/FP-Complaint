@@ -75,7 +75,7 @@ namespace Client.Controllers
                 TempData["Success"] = $"Data has been Successfully Registered! - {result.Message}!";
                 return RedirectToAction("Login", "Auth");
             }
-            return View();
+            return RedirectToAction("Login", "Auth");
         }
     }
 }

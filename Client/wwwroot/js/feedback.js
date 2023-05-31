@@ -21,15 +21,19 @@ $(document).ready(function () {
                 }
             },
             { data: "resolutionId" },
-            { data: "description" },
-            { data: "rating" },
             {
-                data: "",
-                render: (data, type, row) => {
-                    return `<button class="btn btn-success btn-fill" onclick="EditData(${row.id})" data-bs-toggle="modal">Edit</button>
-                    <button class="btn btn-danger btn-fill" onclick="Delete(${row.id})" data-bs-toggle="modal">Delete</button>`
-                }
+                data: "description",
+                width: "25%"
             },
+            { data: "rating" },
+            //{
+            //    data: "",
+            //    render: (data, type, row) => {
+            //        //`<button class="btn btn-success btn-fill" onclick="EditData(${row.id})" data-bs-toggle="modal">Edit</button>
+            //        return `
+            //        <button class="btn btn-danger btn-fill" onclick="Delete(${row.id})" data-bs-toggle="modal">Delete</button>`
+            //    }
+            //},
         ],
         aLengthMenu: [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
         iDisplayLength: 5,

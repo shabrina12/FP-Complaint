@@ -24,6 +24,9 @@ function getEntityCount(entity) {
         let count = result.data.length
         var stepTime = Math.abs(Math.floor(500 / count));
         let current = 0;
+        if (count == 0) {
+            return
+        }
         
         var timer = setInterval(function () {
             current += 1;

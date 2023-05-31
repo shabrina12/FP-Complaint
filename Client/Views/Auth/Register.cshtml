@@ -4,6 +4,19 @@
 	ViewData["Title"] = "Register";
 }
 
+@section Styles {
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <style>
+        a.btn:hover i {
+            transform: translateX(-10px);
+        }
+        button:hover i {
+            transform: translateX(20px);
+            transition: transform 1s;
+        }
+    </style>
+}
+
 <section>
     <div class="container py-5 h-100">
         <div class="row justify-content-center align-items-center h-100">
@@ -65,10 +78,14 @@
                                 </div>
                             </div>
 
-                            <div class="my-4 pt-2">
-								<button type="submit" class="btn btn-lg btn-primary" value="Register">Sign Up</button>
+                            <div class="row justify-content-between my-4 pt-2">
+							    <a asp-action="Login" class="btn btn-link fs-5 col-4 text-start">
+                                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to Login
+                                </a>
+								<button type="submit" class="btn btn-lg btn-primary col-4" value="Register">
+                                    Sign Up <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                </button>
                             </div>
-							<a asp-action="Login">Back to Login</a>
                         </form>
                     </div>
                 </div>

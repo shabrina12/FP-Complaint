@@ -24,10 +24,11 @@ namespace Complaint_API.Base
             var results = await _repository.GetAllAsync();
             if (results.Count() is 0)
             {
-                return NotFound(new
+                return Ok(new
                 {
                     statusCode = 404,
-                    message = "Data Not Found!"
+                    message = "Data Not Found!",
+                    data = results
                 });
             }
 

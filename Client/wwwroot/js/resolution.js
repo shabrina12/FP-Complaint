@@ -20,7 +20,7 @@ $(document).ready(function () {
                 }
             },
             { data: "complaintId" },
-            { data: "description" },
+            /*{ data: "description" },*/
             {
                 data: "status",
                 render: (data, type, row) => {
@@ -59,15 +59,15 @@ $(document).ready(function () {
                     <button class="btn btn-danger btn-fill" onclick="Delete(${row.id})">Delete</button>`
                 }
             },
-            {
-                data: "",
-                render: (data, type, row) => {
-                    return `<button class="btn btn-primary btn-fill" onclick="addFeedback(${row.id})">
-                                Feedback
-                            </button>`                
-                },
-                width: "15%"
-            },
+            //{
+            //    data: "",
+            //    render: (data, type, row) => {
+            //        return `<button class="btn btn-primary btn-fill" onclick="addFeedback(${row.id})">
+            //                    Feedback
+            //                </button>`                
+            //    },
+            //    width: "15%"
+            //},
         ],
         aLengthMenu: [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
         iDisplayLength: 5,
