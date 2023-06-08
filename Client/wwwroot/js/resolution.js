@@ -15,6 +15,7 @@ $(document).ready(function () {
         columns: [
             {
                 data: "",
+                width: "2%",
                 render: (data, type, row, meta) => {
                     return meta.row + 1;
                 }
@@ -26,16 +27,16 @@ $(document).ready(function () {
                 render: (data, type, row) => {
                     switch (data) {
                         case 0:
-                            return `<div class="btn btn-danger btn-fill">Rejected</div>`
+                            return `<div class="badge bg-danger">Rejected</div>`
                             break;
                         case 1:
-                            return `<div class="btn btn-success btn-fill">Accepted</div>`
+                            return `<div class="badge bg-success">Accepted</div>`
                             break;
                         default:
                             if (row.complaint.status == 2) {
-                                return `<div class="btn btn-info btn-fill">Pending</div>`
+                                return `<div class="badge bg-info">Pending</div>`
                             }
-                            return `<div class="btn btn-warning btn-fill">Draft</div>`
+                            return `<div class="badge bg-warning">Draft</div>`
                             break;
                     }
                 }
@@ -54,9 +55,14 @@ $(document).ready(function () {
             },
             {
                 data: "",
+                orderable: false,
                 render: (data, type, row) => {
-                    return `<button class="btn btn-success btn-fill" onclick="EditData(${row.id})">Edit</button>
-                    <button class="btn btn-danger btn-fill" onclick="Delete(${row.id})">Delete</button>`
+                    return `<button class="btn btn-success btn-fill" onclick="EditData(${row.id})">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+                            </button>
+                            <button class="btn btn-danger btn-fill" onclick="Delete(${row.id})">
+                                <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                            </button>`
                 }
             },
             //{

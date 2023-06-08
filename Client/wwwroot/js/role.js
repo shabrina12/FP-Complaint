@@ -16,6 +16,7 @@ $(document).ready(function () {
         columns: [
             {
                 data: "",
+                width: "0.5%",
                 render: (data, type, row, meta) => {
                     return meta.row + 1;
                 }
@@ -24,8 +25,12 @@ $(document).ready(function () {
             {
                 data: "",
                 render: (data, type, row) => {
-                    return `<button class="btn btn-success" onclick="EditData(${row.id})" data-bs-toggle="modal">Edit</button>
-                    <button class="btn btn-danger" onclick="Delete(${row.id})" data-bs-toggle="modal">Delete</button>`
+                    return `<button class="btn btn-success" onclick="EditData(${row.id})" data-bs-toggle="modal">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+                            </button>
+                            <button class="btn btn-danger" onclick="Delete(${row.id})" data-bs-toggle="modal">
+                                <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                            </button>`
                 }
             },
         ],

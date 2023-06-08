@@ -1,9 +1,9 @@
 Saran:
-1. Tombol status di page resolution jgn pake hover cursor, jgn pake button(karena ibaratnya button itu bisa diklik, sedangkan status harusnya tdk bisa diklik)
+1. (DONE) Tombol status di page resolution jgn pake hover cursor, jgn pake button(karena ibaratnya button itu bisa diklik, sedangkan status harusnya tdk bisa diklik)
 2. Pada tampilan feedback, tdk perlu menampilkan resolution id 
-3. Form feedback bintangnya udah warna kuning terang, harusnya warnanya jgn terlalu kontras jika memang bintangnya blm diklik 
-4. Button edit, delete, view diganti icon aja jgn tulisan
-5. Panjang kolom tabel jgn terlalu lebar kalo emg isi kontennya sedikit
+3. (DONE) Form feedback bintangnya udah warna kuning terang, harusnya warnanya jgn terlalu kontras jika memang bintangnya blm diklik 
+4. (DONE) Button edit, delete, view diganti icon aja jgn tulisan
+5. (DONE) Panjang kolom tabel jgn terlalu lebar kalo emg isi kontennya sedikit
 6. Pada form complaint diberi space untuk user upload gambar
 7. Diberi tingkat urgensi dari complaint
 9. Kalo status resolutionnya rejected, tidak usah pake feedback (rating)

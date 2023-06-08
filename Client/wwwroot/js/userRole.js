@@ -16,6 +16,7 @@ $(document).ready(function () {
         columns: [
             {
                 data: "",
+                width: "1%",
                 render: (data, type, row, meta) => {
                     return meta.row + 1;
                 }
@@ -26,7 +27,9 @@ $(document).ready(function () {
             {
                 data: "",
                 render: (data, type, row) => {
-                    return `<button class="btn btn-success" onclick="EditData(${row.id})" data-bs-toggle="modal">Edit</button>`
+                    return `<button class="btn btn-success" onclick="EditData(${row.id})" data-bs-toggle="modal">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+                            </button>`
                 }
             },
         ],

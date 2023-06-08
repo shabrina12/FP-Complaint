@@ -16,6 +16,7 @@ $(document).ready(function () {
         columns: [
             {
                 data: "",
+                width: "4%",
                 render: (data, type, row, meta) => {
                     return meta.row + 1;
                 }
@@ -32,13 +33,13 @@ $(document).ready(function () {
                 render: (data) => {
                     switch (data) {
                         case 0:
-                            return `<div class="btn btn-warning btn-fill">Submitted</div>`
+                            return `<div class="badge bg-warning">Submitted</div>`
                             break;
                         case 1:
-                            return `<div class="btn btn-info btn-fill">On Process</div>`
+                            return `<div class="badge bg-info">On Process</div>`
                             break;
                         case 2:
-                            return `<div class="btn btn-success btn-fill">Completed</div>`
+                            return `<div class="badge bg-success">Completed</div>`
                             break;
                         default:
                             return "Unknown"
@@ -62,26 +63,36 @@ $(document).ready(function () {
             },
             {
                 data: "",
+                orderable: false,
+                width: "18%",
                 render: (data, type, row) => {
-                    return `<button class="btn btn-success btn-fill" onclick="EditData(${row.id})" data-bs-toggle="modal">Edit</button>
-                    <button class="btn btn-danger btn-fill" onclick="Delete(${row.id})" data-bs-toggle="modal">Delete</button>`
+                    return `<button class="btn btn-success btn-fill" onclick="EditData(${row.id})" data-bs-toggle="modal">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+                            </button>
+                            <button class="btn btn-danger btn-fill" onclick="Delete(${row.id})" data-bs-toggle="modal">
+                                <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                            </button>`
                 }
             },
             {
                 data: "",
+                orderable: false,
                 render: (data, type, row) => {
                     if (isAdmin == "False") {
                         let primary = row.status == 2 ? "primary" : "secondary"
                         let disabledBtn = row.status == 2 ? "" : "disabled"
+                        let icon = disabledBtn == "" ?
+                            `<i class="fa fa-eye" aria-hidden="true"></i>` :
+                            `<i class="fa fa-eye-slash" aria-hidden="true"></i>`
                         return `<button class="btn btn-${primary} btn-fill" onclick="showResolution(${row.id})" ${disabledBtn} data-bs-toggle="modal" data-bs-target="#detailResolutionModal">
-                                    View
+                                    ${icon} View
                                 </button>`
                     }
                     return `<button class="btn btn-primary btn-fill" onclick="addResolution(${row.id})">
-                                Assign
+                                <i class="fa fa-user-plus" aria-hidden="true"></i> Assign
                             </button>`
                 },
-                width: "15%"
+                width: "10%"
             },
         ],
         aLengthMenu: [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
